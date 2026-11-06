@@ -12,7 +12,7 @@
       "contents": "Deployable AI runtime, checkpoints, preprocessing, historical replay seeds, gallery metadata/thumbnails and documentation",
       "setup": "Extract the archive and run the service/ application according to docs/PRODUCT_MVP_INTEGRATION_GUIDE.md.",
       "distribution": "Private developer handover; local Water seed is not granted a public data license.",
-      "download_location": https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_DEV_HANDOVER.zip
+      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_DEV_HANDOVER.zip"
     },
     {
       "filename": "FISCYCLE_GALLERY_DATA.zip",
@@ -23,7 +23,7 @@
       "image_count": 224,
       "setup": "Keep compressed. Put inside the extracted service/ directory or set FISCYCLE_BSF_GALLERY_DATA to its approved server path.",
       "license": "CC BY 4.0; attribution included in the data bundle.",
-      "download_location": https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_GALLERY_DATA.zip
+      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_GALLERY_DATA.zip"
     }
   ],
   "handover_instruction": "Supply BOTH files to the team through a separate approved artifact channel. A source-only git clone does not contain model/data files. No artifact has been uploaded by creating this registry."
