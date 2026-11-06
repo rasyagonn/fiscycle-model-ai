@@ -1,0 +1,148 @@
+# Source code and documentation stay in Git. Runtime data/models are distributed
+# separately using ARTIFACTS.json. Ignoring an artifact does NOT remove it from
+# deployment: FISCYCLE_GALLERY_DATA.zip is REQUIRED for the full MVP gallery.
+
+# Generated release packages and build staging
+/FISCYCLE_DEV_HANDOVER/
+/FISCYCLE_DEV_HANDOVER.zip
+/FISCYCLE_GALLERY_DATA.zip
+/.handover_stage_*/
+/.gallery_bundle_*
+/.handover_docs_*
+
+# Python environments (including the existing nested .venv-cuda)
+.venv/
+.venv-*/
+.venv.*/
+venv/
+venv-*/
+env/
+env-*/
+.Python
+pyvenv.cfg
+
+# Python caches, notebook checkpoints and test/build outputs
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+/build/
+/dist/
+*.egg-info/
+.eggs/
+
+# Runtime history, uploaded user data and database sidecars
+/app/state/
+/app/uploads/
+/uploads/
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.log
+*.log.*
+*.pid
+*.dmp
+*.dump
+
+# Secrets and credentials; template files contain placeholders and stay tracked
+.env
+.env.*
+.env-*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+id_rsa
+id_ed25519
+credentials.json
+credentials-*.json
+service-account*.json
+service_account*.json
+.aws/
+.azure/
+/.codex/
+
+# Raw datasets and separately supplied runtime assets
+data/
+/bsf_assets/
+/water_assets/
+/gallery_data/
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.arrow
+*.npy
+*.npz
+
+# Generated research output may contain recorded readings, labels and previews.
+# Keep domain Python source, guides and model metadata outside these folders.
+# Review/sanitize executed Water notebooks before opting them into Git.
+/.agents/skills/fiscycle-bsf-ai/hasil/
+/.agents/skills/fiscycle-water-ai/research/
+/.agents/skills/fiscycle-water-ai/notebook/
+
+# Trained models and binary artifacts: keep version/hash registries in Git
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+*.pickle
+*.onnx
+*.safetensors
+*.h5
+*.hdf5
+*.tflite
+
+# Archives are delivered through the artifact channel, not ordinary Git commits
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+
+# Local ML/browser/tool settings and temporary files
+/Ultralytics/
+/runs/
+/wandb/
+/mlruns/
+/lightning_logs/
+/se-metadata.json
+events.out.tfevents.*
+.cache/
+*.tmp
+*.temp
+*.part
+*.swp
+*.swo
+*~
+
+# Editor and operating-system local state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

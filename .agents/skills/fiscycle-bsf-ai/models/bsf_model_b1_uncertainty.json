@@ -1,0 +1,39 @@
+{
+  "method_version": 1,
+  "model_sha256": "21c6d09b0ab9b8bcb762781262acb439f0dd61b6c28537c43995bf3ca7733af0",
+  "metadata_sha256": "35e6329ced516c30c6ecd86dde9b188a7056667292088215a15697e2c00594c6",
+  "csv_sha256": "3ee922481a8f9fe9db9368d059c6e40b118becf5765b87051c991b2bed1166a0",
+  "scikit_learn_version": "1.9.1",
+  "residual_quantile": 0.9,
+  "absolute_error_radius_mg": 40.79327196928037,
+  "n_residuals": 288,
+  "replicate_ids": [
+    "45-1",
+    "45-2",
+    "45-3",
+    "45-4",
+    "55-1",
+    "55-2",
+    "55-3",
+    "55-4",
+    "65-1",
+    "65-2",
+    "65-3",
+    "65-4",
+    "75-1",
+    "75-2",
+    "75-3",
+    "75-4"
+  ],
+  "residuals_sha256": "808af082a132a29053bea9bc43733c5f7b42d3594ce63a1a843ad6d507c3b3fe",
+  "source": "PUBLIC_RESEARCH_DEVELOPMENT_OOF",
+  "quantile_rule": "numpy quantile, method=higher, absolute residuals",
+  "nominal_quantile_is_not_individual_confidence": true,
+  "coverage_guaranteed": false,
+  "limitations": [
+    "Serial dependence within biological replicates.",
+    "Same development folds were used for hyperparameter selection; optimistic calibration is possible.",
+    "Fold models fit 12 replicates; final model fit 16; residual distribution may differ.",
+    "Constant band is a pooled diagnostic, not conditional uncertainty or field validation."
+  ]
+}

@@ -1,0 +1,21 @@
+<!doctype html><html lang="id"><meta charset="utf-8"><title>Fiscycle Model A — Review</title>
+<style>
+body{font:15px system-ui;margin:24px;background:#eef3f2;color:#173530}button,input,select{font:inherit;padding:8px;margin:3px}button{cursor:pointer}header,section{background:white;padding:16px;margin-bottom:12px;border-radius:10px} .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}canvas{width:100%;background:#ddd;touch-action:none}label{display:block;margin:8px}textarea{width:95%;height:60px}#message{color:#a12821;white-space:pre-wrap}#issues{white-space:pre-wrap}#polygons{max-width:90%}h2{font-size:18px} .hint{color:#50645f}#checks{columns:2}
+</style>
+<header><h1>Model A — Human review</h1><p>RESEARCH_PROTOTYPE · NOT_FIELD_VALIDATED. Tidak ada gambar yang disetujui otomatis.</p>
+<label>Nama reviewer <input id="reviewer" placeholder="Nama manusia yang memeriksa"></label>
+<select id="track"><option value="A1">A1 anotasi</option><option value="A2">A2 crop</option></select>
+<select id="split"><option value="">Semua split</option><option>train</option><option>validation</option><option>test</option><option>quarantine</option><option>excluded</option></select>
+<input id="search" placeholder="Cari ID gambar"><button id="previous">← Sebelumnya</button><button id="next">Berikutnya →</button><span id="position"></span>
+<button id="export">Unduh keputusan JSON</button><label>Pulihkan keputusan JSON <input type="file" id="restore" accept=".json"></label>
+<p class="hint">JSON diunduh ke folder Downloads browser; impor dengan perintah pada README. Simpan keputusan sebelum menutup browser. Test A1 hanya untuk pemeriksaan label, tidak untuk memilih model.</p></header>
+<section><h2 id="identity"></h2><p id="issues"></p><p id="message" role="status"></p><div class="grid">
+<div><h2>Gambar sumber</h2><canvas id="original" width="640" height="640"></canvas></div>
+<div><h2 id="sourceTitle">Anotasi sumber: 0 cyan, 1 oranye</h2><canvas id="source" width="640" height="640"></canvas></div>
+<div><h2 id="proposalTitle">Proposal target 0: visible_bsf_larva</h2><canvas id="proposal" width="640" height="640"></canvas></div>
+<div id="changePanel"><h2>Perubahan: merah dihapus, kuning diubah, hijau ditambah</h2><canvas id="changes" width="640" height="640"></canvas></div></div>
+<div id="editor"><select id="polygons"></select><button id="add">Tambah polygon</button><button id="finish">Selesai polygon</button><button id="remove">Hapus instance terpilih</button><button id="undo">Undo</button><button id="reset">Reset proposal</button><p class="hint">Pilih instance, tarik titik untuk mengubah batas. Mode tambah: klik titik, lalu Selesai. Anotasi hanya bagian terlihat; jangan menyambung bagian lewat tubuh yang menutupi. Minimum area 16 piksel², sisi bbox pendek 3 piksel; objek ambigu → needs revision. Penghapusan kandidat duplikat tetap harus dicek manusia.</p></div>
+<p id="cropHint" class="hint" hidden>Context diperkecil hingga 1014 piksel; crop berasal dari sumber penuh, letterbox 512 tanpa distorsi. Jika ujung, tulisan, atau penggaris masih meragukan, pilih needs revision. Crop tidak dapat diperbaiki dengan approval; buat versi proposal baru.</p>
+</section><section><h2>Pemeriksaan eksplisit per gambar</h2><div id="checks"></div><label>Catatan<textarea id="notes"></textarea></label>
+<button id="approve">Approve</button><button id="revision">Needs revision</button><button id="reject">Reject</button><strong id="decision"></strong><p id="counts"></p></section>
+<script src="review_data.js"></script><script src="review.js"></script></html>

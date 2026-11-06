@@ -1,0 +1,170 @@
+{
+  "version": "forecast-local-v1",
+  "created_from": "notebook/model_b_water_forecasting.ipynb",
+  "random_seed": 42,
+  "source_dataset": "fiscycle_local_recorded",
+  "source_file": "D:\\project\\Fyscycle\\fiscycle-model-ai\\.agents\\skills\\fiscycle-water-ai\\data\\local.csv",
+  "source_sha256": "17924f76484c9a5efe6f127a37a667da113603f8873e32575a6686c5fc7e92b8",
+  "horizon_minutes": 30,
+  "target_tolerance_seconds": 90,
+  "timezone": "UNKNOWN",
+  "local_turbidity_unit": "UNKNOWN",
+  "feature_columns": [
+    "ph",
+    "temperature_c",
+    "turbidity",
+    "ph_lag_3m",
+    "temperature_c_lag_3m",
+    "turbidity_lag_3m",
+    "ph_lag_6m",
+    "temperature_c_lag_6m",
+    "turbidity_lag_6m",
+    "ph_lag_15m",
+    "temperature_c_lag_15m",
+    "turbidity_lag_15m",
+    "ph_lag_30m",
+    "temperature_c_lag_30m",
+    "turbidity_lag_30m",
+    "ph_lag_60m",
+    "temperature_c_lag_60m",
+    "turbidity_lag_60m",
+    "ph_rollmean_15m",
+    "ph_rollstd_15m",
+    "temperature_c_rollmean_15m",
+    "temperature_c_rollstd_15m",
+    "turbidity_rollmean_15m",
+    "turbidity_rollstd_15m",
+    "ph_rollmean_30m",
+    "ph_rollstd_30m",
+    "temperature_c_rollmean_30m",
+    "temperature_c_rollstd_30m",
+    "turbidity_rollmean_30m",
+    "turbidity_rollstd_30m",
+    "ph_rollmean_60m",
+    "ph_rollstd_60m",
+    "temperature_c_rollmean_60m",
+    "temperature_c_rollstd_60m",
+    "turbidity_rollmean_60m",
+    "turbidity_rollstd_60m"
+  ],
+  "split_boundaries": {
+    "train_cut": "2026-10-15 13:31:20.200000",
+    "validation_cut": "2026-10-22 03:27:21"
+  },
+  "test_period": {
+    "start": "2026-10-22 03:28:15",
+    "end": "2026-10-28 16:24:46",
+    "rows": 3040
+  },
+  "metrics": [
+    {
+      "target": "ph",
+      "model": "persistence",
+      "MAE": 0.12426315789473684,
+      "RMSE": 0.18214529336421745,
+      "bias_pred_minus_actual": -0.0012697368421052632,
+      "test_rows": 3040
+    },
+    {
+      "target": "ph",
+      "model": "rolling_15m",
+      "MAE": 0.11889539473684213,
+      "RMSE": 0.17308499205212513,
+      "bias_pred_minus_actual": -0.0017624999999999893,
+      "test_rows": 3040
+    },
+    {
+      "target": "ph",
+      "model": "hist_gradient_boosting",
+      "MAE": 0.10019910447263355,
+      "RMSE": 0.14454631271968174,
+      "bias_pred_minus_actual": 0.007161351491752486,
+      "test_rows": 3040
+    },
+    {
+      "target": "temperature_c",
+      "model": "persistence",
+      "MAE": 0.1761842105263158,
+      "RMSE": 0.248423582446976,
+      "bias_pred_minus_actual": -0.009585526315789477,
+      "test_rows": 3040
+    },
+    {
+      "target": "temperature_c",
+      "model": "rolling_15m",
+      "MAE": 0.19429210526315793,
+      "RMSE": 0.2668270334682633,
+      "bias_pred_minus_actual": -0.011294736842105205,
+      "test_rows": 3040
+    },
+    {
+      "target": "temperature_c",
+      "model": "hist_gradient_boosting",
+      "MAE": 0.1697440168438616,
+      "RMSE": 0.24495180045433915,
+      "bias_pred_minus_actual": -0.03328787138861622,
+      "test_rows": 3040
+    },
+    {
+      "target": "turbidity",
+      "model": "persistence",
+      "MAE": 2.5825986842105264,
+      "RMSE": 3.358382579848755,
+      "bias_pred_minus_actual": -0.02720394736842105,
+      "test_rows": 3040
+    },
+    {
+      "target": "turbidity",
+      "model": "rolling_15m",
+      "MAE": 2.4360065789473686,
+      "RMSE": 3.1856550388131777,
+      "bias_pred_minus_actual": -0.03142763157894642,
+      "test_rows": 3040
+    },
+    {
+      "target": "turbidity",
+      "model": "hist_gradient_boosting",
+      "MAE": 2.174825235715933,
+      "RMSE": 2.833899934887701,
+      "bias_pred_minus_actual": -0.041782994656981605,
+      "test_rows": 3040
+    }
+  ],
+  "selected_hyperparameters": {
+    "ph": {
+      "learning_rate": 0.03,
+      "max_iter": 300,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 1.0
+    },
+    "temperature_c": {
+      "learning_rate": 0.05,
+      "max_iter": 300,
+      "max_leaf_nodes": 31,
+      "l2_regularization": 1.0
+    },
+    "turbidity": {
+      "learning_rate": 0.05,
+      "max_iter": 200,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 0.1
+    }
+  },
+  "exported": {
+    "ph": "models\\forecast_ph_v1.joblib",
+    "turbidity": "models\\forecast_turbidity_v1.joblib"
+  },
+  "decision": {
+    "ph": "CONDITIONAL_GO_SINGLE_POND",
+    "temperature_c": "NO_GO",
+    "turbidity": "BLOCKED_FOR_INTEGRATION_UNTIL_UNIT_CONFIRMED"
+  },
+  "limitations": [
+    "single local pond",
+    "historical recorded data, not live feed",
+    "timezone unknown",
+    "turbidity unit unknown",
+    "no DO or TAN locally",
+    "external Udanor not used for training"
+  ]
+}

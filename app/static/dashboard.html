@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <script src="/assets/gateway.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <title>Fiscycle — Water Quality AI Testing Dashboard</title>
+  <style>
+    :root { --ink:#17322e; --muted:#60736f; --line:#d9e7e2; --paper:#f5faf8; --card:#fff; --teal:#087f70; --green:#2c9b68; --amber:#c17a16; --red:#bb3d4a; --blue:#3979ad; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    header { color:white; background:linear-gradient(125deg,#075f56,#16926f); padding:24px max(20px,calc((100vw - 1380px)/2)); }
+    header h1 { margin:0 0 6px; font-size:clamp(20px,3vw,31px); letter-spacing:.02em; }
+    header p { margin:0; opacity:.88; }
+    .app-nav { display:flex; gap:10px; flex-wrap:wrap; padding:10px max(20px,calc((100vw - 1380px)/2)); background:#084f48; }
+    .app-nav a { color:white; text-decoration:none; padding:7px 11px; border-radius:9px; }
+    .app-nav a.active,.app-nav a:hover { background:#1b8b79; }
+    .warning { background:#fff4d7; color:#724b08; border-bottom:1px solid #eed18c; padding:10px 20px; text-align:center; font-weight:800; letter-spacing:.04em; }
+    main { max-width:1380px; margin:auto; padding:20px; }
+    .panel,.card { background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:0 4px 20px rgba(20,65,56,.05); }
+    .panel { padding:18px; margin-bottom:18px; }
+    .panel h2 { margin:0 0 14px; font-size:19px; }
+    .panel h3 { margin:14px 0 8px; font-size:15px; }
+    .grid { display:grid; gap:14px; }
+    .grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .card { padding:15px; min-width:0; }
+    .metric { font-size:30px; font-weight:800; margin:4px 0; }
+    .label,.meta { color:var(--muted); font-size:12px; }
+    .controls { display:flex; flex-wrap:wrap; gap:9px; align-items:end; }
+    label { display:grid; gap:5px; font-size:12px; color:var(--muted); }
+    select,button { min-height:38px; border-radius:9px; border:1px solid var(--line); padding:7px 11px; font:inherit; }
+    button { cursor:pointer; color:white; background:var(--teal); font-weight:700; }
+    button.secondary { color:var(--ink); background:white; }
+    button:disabled { opacity:.45; cursor:not-allowed; }
+    .status { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:5px 9px; font-size:12px; font-weight:800; background:#e8f5f0; color:#17674f; }
+    .status.SUSPICIOUS,.status.STALE { background:#fff0d6; color:#85530c; }
+    .status.SENSOR_ERROR,.status.TIDAK_SIAP { background:#ffe4e7; color:#8c2934; }
+    .status.DIJEDA { background:#edf1f3; color:#536269; }
+    .row { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; }
+    .tabs { display:flex; gap:7px; margin-bottom:12px; }
+    .tabs button { color:var(--teal); background:white; }
+    .tabs button.active { color:white; background:var(--teal); }
+    .forecast-value { font-size:24px; font-weight:800; }
+    .notice { border-left:4px solid var(--amber); background:#fff8e9; padding:10px 12px; border-radius:7px; }
+    .info { border-left-color:var(--teal); background:#eef9f6; }
+    ul.clean { list-style:none; padding:0; margin:8px 0; }
+    ul.clean li { padding:9px 0; border-bottom:1px solid var(--line); }
+    .chart { width:100%; min-height:230px; border:1px solid var(--line); background:#fbfdfc; border-radius:10px; overflow:hidden; }
+    .chart svg { width:100%; height:230px; display:block; }
+    table { width:100%; border-collapse:collapse; font-size:12px; }
+    th,td { padding:8px; text-align:left; border-bottom:1px solid var(--line); }
+    th { color:var(--muted); }
+    details pre { max-height:420px; overflow:auto; background:#102723; color:#d9f4eb; padding:14px; border-radius:10px; white-space:pre-wrap; word-break:break-word; }
+    #toast { position:fixed; right:18px; bottom:18px; max-width:420px; display:none; color:white; background:#7c2932; padding:12px 15px; border-radius:10px; z-index:5; }
+    @media (max-width:850px) { .grid-3,.grid-2 { grid-template-columns:1fr; } main { padding:12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FISCYCLE — WATER QUALITY AI TESTING DASHBOARD</h1>
+    <p>Dashboard internal untuk memeriksa QA sensor, forecasting, uncertainty, Decision Support, dan historical replay.</p>
+  </header>
+  <nav class="app-nav" aria-label="Navigasi Fiscycle"><a href="/ecosystem">Ekosistem & Demo</a><a class="active" href="/">Kualitas Air</a><a href="/bsf-intelligence">Smart BSF</a></nav>
+  <div class="warning">SIMULASI DATA HISTORIS — PERANGKAT IoT TIDAK AKTIF</div>
+  <main>
+    <section class="panel">
+      <h2>Kontrol Historical Replay</h2>
+      <div class="controls">
+        <label>Periode historis<select id="period"></select></label>
+        <button id="create">Buat Sesi</button>
+        <button id="start">Mulai</button>
+        <button id="pause" class="secondary">Jeda</button>
+        <button id="next" class="secondary">Observasi Berikutnya</button>
+        <button id="reset" class="secondary">Reset</button>
+        <label>Kecepatan<select id="speed"><option value="2000">0,5×</option><option value="1000" selected>1×</option><option value="500">2×</option><option value="250">4×</option></select></label>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <span id="replay-status" class="status DIJEDA">BELUM ADA SESI</span>
+        <span>Timestamp replay (WIB): <strong id="clock">—</strong></span>
+        <span>Observasi: <strong id="progress">0 / 0</strong></span>
+        <span id="warmup" class="meta"></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Monitoring Sensor</h2>
+      <div class="grid grid-3">
+        <article class="card"><div class="label">pH</div><div id="sensor-ph" class="metric">—</div><div>tanpa satuan</div></article>
+        <article class="card"><div class="label">Suhu air</div><div id="sensor-temp" class="metric">—</div><div>°C</div></article>
+        <article class="card"><div class="label">Turbidity</div><div id="sensor-turb" class="metric">—</div><div>NTU</div></article>
+      </div>
+      <div class="row" style="margin-top:13px">
+        <span>Pond ID: <strong id="pond">—</strong></span><span>Sumber: <strong id="source">—</strong></span>
+        <span>Waktu pembacaan (WIB): <strong id="reading-time">—</strong></span><span id="qa-badge" class="status DIJEDA">BELUM ADA DATA</span>
+      </div>
+      <div id="qa-reasons" class="meta" style="margin-top:8px">Alasan QA belum tersedia.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Pemeriksaan Sensor dan Anomali</h2>
+      <div class="grid grid-2">
+        <article class="card"><h3>Rule-Based Sensor QA</h3><p id="qa-description">Mulai replay untuk menjalankan pemeriksaan.</p><p>Forecasting: <strong id="forecast-allowed">—</strong></p></article>
+        <article class="card"><h3>Isolation Forest</h3><span class="status SUSPICIOUS">EKSPERIMEN — BELUM TERVALIDASI</span><p id="if-status">Isolation Forest belum tersedia pada paket aplikasi.</p><p class="meta">Indikasi statistik tidak membuktikan stres ikan, kerusakan sensor, atau bahaya air.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Prediksi Kualitas Air</h2>
+      <div class="tabs"><button data-horizon="30" class="active">30 menit</button><button data-horizon="60">1 jam</button><button data-horizon="120">2 jam</button></div>
+      <div id="forecast-cards" class="grid grid-3"></div>
+      <div class="notice" style="margin-top:12px"><strong>Transparansi uncertainty:</strong> rentang prediksi bersifat eksperimental. “Target cakupan 90%” bukan confidence atau jaminan bahwa satu prediksi benar.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Insight dan Rekomendasi</h2>
+      <div id="insights" class="notice info">Belum ada hasil Decision Support.</div>
+      <ul id="recommendations" class="clean"></ul>
+      <details><summary>Keterbatasan yang dilaporkan engine</summary><ul id="limitations"></ul></details>
+    </section>
+
+    <section class="panel">
+      <h2>Grafik Pengujian</h2>
+      <div class="grid grid-2">
+        <article class="card"><div class="row"><h3>Riwayat sensor terungkap</h3><select id="history-param"><option value="ph">pH</option><option value="temperature_c">Suhu</option><option value="turbidity_ntu">Turbidity</option></select></div><div id="history-chart" class="chart"></div></article>
+        <article class="card"><div class="row"><h3>Tiga titik forecast</h3><select id="forecast-param"><option value="ph">pH</option><option value="temperature_c">Suhu</option><option value="turbidity_ntu">Turbidity</option></select></div><div id="forecast-chart" class="chart"></div></article>
+      </div>
+      <article class="card" style="margin-top:14px"><h3>Actual vs Predicted yang sudah matang</h3><div style="overflow:auto"><table><thead><tr><th>Target</th><th>Parameter</th><th>Horizon</th><th>Prediksi</th><th>Aktual</th><th>|Error|</th></tr></thead><tbody id="comparison-body"></tbody></table></div></article>
+    </section>
+
+    <section class="panel">
+      <details><summary><strong>Developer Debug</strong></summary>
+        <div class="row" style="margin:12px 0"><span>Versi model: <strong id="model-version">—</strong></span><span>Durasi request: <strong id="duration">—</strong></span><span>Model IDs: <strong id="model-ids">—</strong></span></div>
+        <pre id="raw">Belum ada respons API.</pre>
+      </details>
+    </section>
+  </main>
+  <div id="toast"></div>
+  <script>
+    "use strict";
+    const state = { sessionId:null, replay:null, periods:[], horizon:"30", timer:null, duration:0 };
+    const $ = id => document.getElementById(id);
+    const esc = value => String(value ?? "—").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+    const fmt = (value, digits=2) => value === null || value === undefined ? "Tidak tersedia" : Number(value).toFixed(digits);
+    const parameterName = { ph:"pH", temperature_c:"Suhu", turbidity_ntu:"Turbidity" };
+    const unit = { ph:"", temperature_c:"°C", turbidity_ntu:"NTU" };
+
+    async function api(path, options={}) {
+      const started = performance.now();
+      try {
+        const response = await fetch(path, { headers:{"Content-Type":"application/json"}, ...options });
+        const body = await response.json().catch(() => ({detail:"Respons server bukan JSON."}));
+        state.duration = performance.now() - started;
+        if (!response.ok) throw new Error(body.detail || `HTTP ${response.status}`);
+        return body;
+      } catch (error) {
+        showError(error.message || "API tidak dapat dihubungi.");
+        throw error;
+      }
+    }
+
+    function showError(message) { const box=$("toast"); box.textContent=message; box.style.display="block"; clearTimeout(box._timer); box._timer=setTimeout(()=>box.style.display="none",5000); }
+    function setButtons(active) { ["start","pause","next","reset"].forEach(id => $(id).disabled=!active); }
+
+    async function loadPeriods() {
+      const health = await api("/health");
+      if (!health.services?.water_quality?.ready) throw new Error("Water Quality belum siap dimuat. Periksa /water-quality/health.");
+      const data = await api("/water-quality/replay/periods");
+      state.periods = data.periods;
+      $("period").innerHTML = data.periods.map(p=>`<option value="${esc(p.id)}">${esc(p.label)} (${p.observations} observasi)</option>`).join("");
+      if (!data.periods.length) throw new Error("Tidak ditemukan periode replay yang layak.");
+      await createSession();
+      // Tampilkan satu observasi asli saat halaman dibuka; replay tetap dijeda.
+      await nextObservation();
+    }
+
+    async function createSession() {
+      stopTimer();
+      const selected = state.periods.find(p=>p.id===$("period").value) || state.periods[0];
+      const data = await api("/water-quality/replay/sessions", {method:"POST",body:JSON.stringify({start:selected.start,end:selected.end,pond_id:selected.pond_id,replace_session_id:state.sessionId})});
+      state.sessionId=data.session_id; render(data); setButtons(true);
+    }
+    async function startReplay() { if(!state.sessionId)return; const data=await api(`/water-quality/replay/sessions/${state.sessionId}/start`,{method:"POST"}); render(data); startTimer(); }
+    async function pauseReplay() { stopTimer(); if(!state.sessionId)return; render(await api(`/water-quality/replay/sessions/${state.sessionId}/pause`,{method:"POST"})); }
+    async function nextObservation() { if(!state.sessionId)return; const data=await api(`/water-quality/replay/sessions/${state.sessionId}/next`,{method:"POST"}); render(data); if(data.finished)stopTimer(); }
+    async function resetReplay() { stopTimer(); if(!state.sessionId)return; render(await api(`/water-quality/replay/sessions/${state.sessionId}/reset`,{method:"POST"})); }
+    function startTimer(){ stopTimer(); state.timer=setInterval(()=>nextObservation().catch(stopTimer),Number($("speed").value)); }
+    function stopTimer(){ if(state.timer)clearInterval(state.timer); state.timer=null; }
+
+    function render(data) {
+      state.replay=data; const result=data.latest_result;
+      $("replay-status").textContent=data.status; $("replay-status").className=`status ${data.status}`;
+      $("clock").textContent=data.current_replay_timestamp || "Belum dimulai";
+      $("progress").textContent=`${data.processed_observations} / ${data.total_observations}`;
+      $("warmup").textContent=`Warm-up tersembunyi: ${data.warmup.observations} observasi`;
+      if (result) renderResult(result);
+      renderHistory(data.observations); renderComparisons(data.completed_comparisons);
+      $("raw").textContent=JSON.stringify(data,null,2); $("duration").textContent=`${state.duration.toFixed(1)} ms`;
+    }
+
+    function renderResult(result) {
+      const current=result.current_readings || {};
+      $("sensor-ph").textContent=fmt(current.ph); $("sensor-temp").textContent=fmt(current.temperature_c); $("sensor-turb").textContent=fmt(current.turbidity_ntu,1);
+      $("pond").textContent=result.pond_id; $("source").textContent=result.source_dataset; $("reading-time").textContent=result.latest_sensor_timestamp || "Tidak tersedia";
+      const quality=result.data_quality || {}; $("qa-badge").textContent=quality.status || "UNKNOWN"; $("qa-badge").className=`status ${quality.status}`;
+      $("qa-reasons").textContent=(quality.reasons || []).length ? `Kode alasan: ${quality.reasons.join(", ")}` : "Tidak ada reason code.";
+      const valid=quality.status==="VALID"; $("qa-description").textContent=valid ? "Pembacaan lolos pemeriksaan QA yang tersedia. Ini bukan sertifikasi keamanan air." : "Pembacaan memerlukan pemeriksaan sesuai reason code.";
+      $("forecast-allowed").textContent=valid ? "Diizinkan bila riwayat fitur cukup" : "Ditahan";
+      const anomaly=result.anomaly_detection || {}; $("if-status").textContent=anomaly.status==="EXPERIMENTAL_RESEARCH_OPT_IN" ? `Flag: ${anomaly.flag}; score: ${fmt(anomaly.score,4)}` : "Isolation Forest belum tersedia pada paket aplikasi.";
+      renderForecasts(result.forecasts || {}); renderDecision(result.decision_support || {});
+      const ids=[]; Object.values(result.forecasts||{}).forEach(hs=>Object.values(hs).forEach(f=>ids.push(f.model_id)));
+      $("model-ids").textContent=ids.join(", "); $("model-version").textContent=Object.values(result.forecasts?.ph||{})[0]?.model_version || "—";
+      renderForecastChart();
+    }
+
+    function renderForecasts(forecasts) {
+      $("forecast-cards").innerHTML=Object.keys(parameterName).map(p=>{
+        const f=forecasts[p]?.[state.horizon]; if(!f)return `<article class="card"><h3>${parameterName[p]}</h3><p>Tidak tersedia</p></article>`;
+        const interval=f.interval_status==="UNAVAILABLE" ? "Rentang prediksi belum tersedia." : `${fmt(f.lower)} – ${fmt(f.upper)} ${unit[p]}`;
+        const method=f.algorithm==="Persistence" ? "Persistence (Baseline)" : f.algorithm;
+        const value=f.value===null ? "Tidak tersedia" : `${fmt(f.value)} ${unit[p]}`;
+        return `<article class="card"><div class="label">${parameterName[p]} +${state.horizon} menit</div><div class="forecast-value">${value}</div><p><strong>Rentang prediksi:</strong> ${interval}</p><p><strong>Target:</strong> ${esc(f.target_timestamp)}</p><p><strong>Metode:</strong> ${esc(method)}</p><p><strong>Status:</strong> ${esc(f.status)}</p><p class="meta">Target cakupan: ${(100*f.target_coverage).toFixed(0)}% · Cakupan historis terukur: ${(100*f.observed_empirical_coverage).toFixed(2)}% · Interval eksperimental</p></article>`;
+      }).join("");
+    }
+
+    function renderDecision(ds) {
+      const insights=ds.insights || [], recommendations=ds.recommendations || [];
+      $("insights").innerHTML=insights.length ? insights.map(i=>`<div><strong>${esc(i.rule_id)}</strong> · ${esc(parameterName[i.parameter]||i.parameter||"Umum")}<br>${esc(i.explanation)}<br><span class="meta">Basis: ${esc(i.basis)}</span></div>`).join("<hr>") : "Tidak ada insight khusus pada observasi ini.";
+      $("recommendations").innerHTML=recommendations.length ? recommendations.map(r=>`<li><strong>${esc(r.rule_id)}</strong> — ${esc(r.action)}<br><span class="meta">Alasan: ${esc(r.reason)}</span></li>`).join("") : "<li>Tidak ada tindakan khusus; lanjutkan monitoring dan verifikasi rutin.</li>";
+      $("limitations").innerHTML=(ds.limitations||[]).map(x=>`<li>${esc(x)}</li>`).join("");
+    }
+
+    function svgChart(points, color="#087f70", interval=false) {
+      if(!points.length)return '<div style="padding:90px 20px;text-align:center;color:#60736f">Data belum tersedia.</div>';
+      const width=700,height=220,pad=30; const values=points.flatMap(p=>interval?[p.y,p.low,p.high]:[p.y]).filter(Number.isFinite);
+      if(!values.length)return '<div style="padding:90px 20px;text-align:center;color:#60736f">Nilai numerik belum tersedia.</div>';
+      let min=Math.min(...values),max=Math.max(...values); if(min===max){min-=1;max+=1} const x=i=>pad+i*(width-2*pad)/Math.max(1,points.length-1); const y=v=>height-pad-(v-min)*(height-2*pad)/(max-min);
+      const line=points.map((p,i)=>Number.isFinite(p.y)?`${x(i)},${y(p.y)}`:null).filter(Boolean).join(" ");
+      const bars=interval?points.map((p,i)=>Number.isFinite(p.low)&&Number.isFinite(p.high)?`<line x1="${x(i)}" x2="${x(i)}" y1="${y(p.low)}" y2="${y(p.high)}" stroke="#9ccfc4" stroke-width="7"/>`:"").join(""):"";
+      const dots=points.map((p,i)=>Number.isFinite(p.y)?`<circle cx="${x(i)}" cy="${y(p.y)}" r="3" fill="${color}"/>`:"").join("");
+      return `<svg viewBox="0 0 ${width} ${height}" role="img"><line x1="${pad}" y1="${height-pad}" x2="${width-pad}" y2="${height-pad}" stroke="#cddbd7"/>${bars}<polyline points="${line}" fill="none" stroke="${color}" stroke-width="2"/>${dots}<text x="5" y="${pad}" font-size="11" fill="#60736f">${max.toFixed(2)}</text><text x="5" y="${height-pad}" font-size="11" fill="#60736f">${min.toFixed(2)}</text></svg>`;
+    }
+    function renderHistory(observations) { const p=$("history-param").value; const values=(observations||[]).map(o=>({y:numeric(o[p])})); $("history-chart").innerHTML=svgChart(values,"#3979ad"); }
+    function numeric(value) { return value === null || value === undefined ? Number.NaN : Number(value); }
+    function renderForecastChart() { const forecasts=state.replay?.latest_result?.forecasts||{}; const p=$("forecast-param").value; const values=["30","60","120"].map(h=>{const f=forecasts[p]?.[h]||{};return {y:numeric(f.value),low:numeric(f.lower),high:numeric(f.upper)}}); $("forecast-chart").innerHTML=svgChart(values,"#087f70",true); }
+    function renderComparisons(rows) { $("comparison-body").innerHTML=(rows||[]).slice(-20).reverse().map(r=>`<tr><td>${esc(r.actual_timestamp||r.target)}</td><td>${esc(parameterName[r.parameter]||r.parameter)}</td><td>${r.horizon_minutes} menit</td><td>${fmt(r.prediction)}</td><td>${fmt(r.actual)}</td><td>${r.error===null||r.error===undefined?"—":fmt(Math.abs(r.error))}</td></tr>`).join("") || '<tr><td colspan="6">Belum ada forecast yang mencapai waktu aktualnya.</td></tr>'; }
+
+    $("create").addEventListener("click",()=>createSession().catch(()=>{})); $("start").addEventListener("click",()=>startReplay().catch(()=>{})); $("pause").addEventListener("click",()=>pauseReplay().catch(()=>{})); $("next").addEventListener("click",()=>nextObservation().catch(()=>{})); $("reset").addEventListener("click",()=>resetReplay().catch(()=>{}));
+    $("speed").addEventListener("change",()=>{if(state.timer)startTimer()}); $("history-param").addEventListener("change",()=>renderHistory(state.replay?.observations||[])); $("forecast-param").addEventListener("change",renderForecastChart);
+    document.querySelectorAll("[data-horizon]").forEach(button=>button.addEventListener("click",()=>{state.horizon=button.dataset.horizon;document.querySelectorAll("[data-horizon]").forEach(b=>b.classList.toggle("active",b===button));renderForecasts(state.replay?.latest_result?.forecasts||{})}));
+    setButtons(false); loadPeriods().catch(error=>showError(`Inisialisasi gagal: ${error.message}`));
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  </script>
+</body>
+</html>

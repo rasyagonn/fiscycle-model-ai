@@ -1,0 +1,15 @@
+# Matriks bukti — UNS Innovation Hackathon 2026
+
+| Klaim demo | Bukti yang benar-benar dapat dijalankan | Data/artefak | Batas klaim |
+|---|---|---|---|
+| Galeri lengkap A1/A2 pasca-evaluasi | `/bsf-intelligence#gallery`; GET `/api/v1/bsf/gallery/datasets`, `/images`; POST `/images/{id}/analyze`, `/jobs`; Chrome dan portable checks lulus | Seluruh46 A1 dan178 A2 test,226 thumbnail termasuk2 dev,complete optional ZIP224 original+46 annotation | Kedua set sudah released/not blind. A1 completeness tidak certified. A2 130/178 prediksi,48 screen-rejected,MAE19,14mg deskriptif; strict reviewed-ROI metric unavailable |
+| A: satu foto menghasilkan segmentasi, estimasi individu, sebaran dan DSS | `POST /api/v1/bsf/analyze-photo`; tombol contoh di `/ecosystem`; tes `test_four_actual_flows` dan Chrome | Checkpoint A1 + A2 v3; contoh public development train | 17 terdeteksi, 10 dianalisis, 7 ditolak pada contoh; bukan evaluasi akurasi atau biomassa populasi |
+| B: forecast pertumbuhan dan DSS berbasis pengamatan | `GET /api/v1/bsf/replay/{id}?revealed=6`, `POST /api/v1/bsf/decision-support` | Seed Mendeley development 16 trajektori; B1 frozen | In-sample, mean wet mg/individu. Target +1 hari, unmatched timing tidak diberi error numerik |
+| C: forecast Water dengan evaluasi aktual | `/water-quality/replay/periods`, create/advance session, metrics | 299 rekaman lokal terkurasi; 9 horizon/parameter (7 ML, 2 persistence) | Retrospektif, bukan live IoT atau holdout independen. Baseline pada pasangan yang sama |
+| D: keputusan Water berubah saat kelayakan input berubah | Snapshot lalu `/water-quality/scenario`; trace C01–C06 | Hasil historis tersimpan + asumsi SIMULATED_RULE_ONLY | Tidak membuktikan efek perlakuan; tanpa ambang biologis disahkan |
+| Satu pengalaman Fiscycle | `/`, `/bsf-intelligence`, `/ecosystem`; navigasi/PWA sama; Chrome 390/768/1440 | UI referensi yang sudah tersedia di repository | Tidak mengklaim frontend eksternal tim yang belum ditemukan |
+| Handover mandiri | `python -m app.verify_release`; 62 checks dan336 checksum setelah relokasi bersama data bundle | Semua runtime model,dua seed,complete gallery metadata/thumbnail;224 original test pada optional data ZIP | Full gallery memerlukan kedua ZIP; CPU existing environment diuji,instalasi baru/Docker belum diverifikasi |
+| Keamanan integrasi | Tes HTTP token, penolakan lintas tenant, streaming body limit, restart SQLite | `app/core/security.py`, schema v2 | Bukan sistem akun produk atau kesiapan publik multi-farm penuh |
+| Limbah B2B/B2C → BSF → potensi pakan → budidaya → pasar | Tampilan konteks ekosistem | Jalur produk konseptual; AI yang sudah berjalan ditandai | Logistik, rewards, Circular Points, demand orchestration, kelayakan pakan dan dampak ekonomi/emisi belum diimplementasikan/diukur |
+
+Tidak ada klaim kemitraan, penilaian juri, kelulusan lomba atau dampak terukur baru. Paper/proposal kompetisi tidak diubah. Pengambilan screenshot/video dapat dilakukan setelah menjalankan empat tombol demo; laporan ini tidak menyatakan rekaman promosi telah dibuat.
