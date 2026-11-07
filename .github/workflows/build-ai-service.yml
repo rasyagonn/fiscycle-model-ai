@@ -1,0 +1,65 @@
+name: Build AI Service untuk Azure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: build-ai-service-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-test-publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Ambil kode repository
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Tetapkan nama image dan versi commit
+        env:
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          owner_lower="${OWNER,,}"
+          echo "IMAGE=ghcr.io/${owner_lower}/fiscycle-ai-service:${GITHUB_SHA}" >> "$GITHUB_ENV"
+
+      - name: Build image Linux dengan model lokal
+        env:
+          SOURCE_REPOSITORY: ${{ github.repository }}
+        run: |
+          docker build --platform linux/amd64 \
+            --label "org.opencontainers.image.source=https://github.com/${SOURCE_REPOSITORY}" \
+            --label "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            --tag "$IMAGE" ai-service
+
+      - name: Uji container dan inferensi nyata sebelum publish
+        run: python3 ai-service/tools/verify_container.py --image "$IMAGE"
+
+      - name: Login GitHub Container Registry
+        env:
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "$GHCR_TOKEN" | docker login ghcr.io --username "$GHCR_USER" --password-stdin
+
+      - name: Publish image yang lolos pengujian
+        run: docker push "$IMAGE"
+
+      - name: Tampilkan hasil untuk langkah Azure berikutnya
+        run: |
+          {
+            echo '### Image siap untuk dicoba di Azure'
+            echo "Image: \`$IMAGE\`"
+            echo 'Model lokal dan 16 foto demo disertakan. Tidak ada seed Water privat atau secret deployment.'
+            echo 'Tes numerik/replay Water yang memerlukan fixture privat di-skip secara eksplisit.'
+            echo 'Periksa package visibility tetap PRIVATE sebelum melanjutkan.'
+            echo 'Workflow ini belum membuat resource atau endpoint Azure.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Hapus credential registry pada runner
+        if: always()
+        run: docker logout ghcr.io || true
