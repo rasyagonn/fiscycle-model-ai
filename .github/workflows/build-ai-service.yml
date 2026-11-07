@@ -2,10 +2,15 @@ name: Build AI Service untuk Azure
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'ai-service/**'
+      - '.github/workflows/build-ai-service.yml'
 
 permissions:
   contents: read
-  packages: write
+  id-token: write
 
 concurrency:
   group: build-ai-service-${{ github.ref }}
@@ -22,11 +27,11 @@ jobs:
           persist-credentials: false
 
       - name: Tetapkan nama image dan versi commit
-        env:
-          OWNER: ${{ github.repository_owner }}
         run: |
-          owner_lower="${OWNER,,}"
-          echo "IMAGE=ghcr.io/${owner_lower}/fiscycle-ai-service:${GITHUB_SHA}" >> "$GITHUB_ENV"
+          echo "IMAGE=ca9edb09a3d8acr.azurecr.io/fiscycle-ai-service:${GITHUB_SHA}" >> "$GITHUB_ENV"
+
+      - name: Uji retry startup
+        run: python3 -m unittest discover -s ai-service/tests -p test_container_startup.py -v
 
       - name: Build image Linux dengan model lokal
         env:
@@ -40,11 +45,16 @@ jobs:
       - name: Uji container dan inferensi nyata sebelum publish
         run: python3 ai-service/tools/verify_container.py --image "$IMAGE"
 
-      - name: Login GitHub Container Registry
-        env:
-          GHCR_USER: ${{ github.actor }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "$GHCR_TOKEN" | docker login ghcr.io --username "$GHCR_USER" --password-stdin
+      - name: Login Azure dengan identitas khusus build
+        uses: azure/login@v3.1.0
+        with:
+          # Public resource identifiers, not credentials. Federation trusts main only.
+          client-id: 52993a93-cdbe-4a19-a2fd-c0605322b02c
+          tenant-id: 1d5169ac-c7cb-4275-9764-bf8c9c364a4c
+          subscription-id: 4086d2a4-2376-47f3-9916-0bbce28c7e2d
+
+      - name: Login registry Azure yang sudah ada
+        run: az acr login --name ca9edb09a3d8acr
 
       - name: Publish image yang lolos pengujian
         run: docker push "$IMAGE"
@@ -56,10 +66,10 @@ jobs:
             echo "Image: \`$IMAGE\`"
             echo 'Model lokal dan 16 foto demo disertakan. Tidak ada seed Water privat atau secret deployment.'
             echo 'Tes numerik/replay Water yang memerlukan fixture privat di-skip secara eksplisit.'
-            echo 'Periksa package visibility tetap PRIVATE sebelum melanjutkan.'
+            echo 'Image berada di ACR privat; runtime memakai managed identity dengan AcrPull.'
             echo 'Workflow ini belum membuat resource atau endpoint Azure.'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Hapus credential registry pada runner
         if: always()
-        run: docker logout ghcr.io || true
+        run: docker logout ca9edb09a3d8acr.azurecr.io || true

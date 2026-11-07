@@ -19,6 +19,24 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def wait_for_health(base, timeout=180):
+    """Wait through transient port resets, but retain a bounded readiness gate."""
+    deadline = time.monotonic() + timeout
+    last_error = None
+    while True:
+        try:
+            with urllib.request.urlopen(base + '/health', timeout=3) as response:
+                health = json.load(response)
+            if health['ready']:
+                return health
+            last_error = RuntimeError('Health endpoint reports ready=false')
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            last_error = exc
+        if time.monotonic() >= deadline:
+            raise RuntimeError(f'Container did not become ready within {timeout} seconds') from last_error
+        time.sleep(2)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--image', required=True)
@@ -64,22 +82,11 @@ def main():
                    'app.main:app', '--host', '0.0.0.0', '--port', '8000', '--workers', '1')
             binding = docker('port', live_name, '8000/tcp', capture=True)
             base = 'http://' + binding.splitlines()[0]
-            deadline = time.monotonic() + 180
-            while True:
-                try:
-                    with urllib.request.urlopen(base + '/health', timeout=3) as response:
-                        health = json.load(response)
-                    if health['ready']:
-                        assert not health['services']['water_replay']
-                        assert health['services']['bsf_replay'] and health['services']['curated_gallery']
-                        assert all(row['loaded'] and row['artifacts_verified'] and row['model_source'] == 'local'
-                                   for row in health['runtime_models'].values())
-                        break
-                except (urllib.error.URLError, TimeoutError):
-                    pass
-                if time.monotonic() >= deadline:
-                    raise RuntimeError('Container did not become ready within 180 seconds')
-                time.sleep(2)
+            health = wait_for_health(base)
+            assert not health['services']['water_replay']
+            assert health['services']['bsf_replay'] and health['services']['curated_gallery']
+            assert all(row['loaded'] and row['artifacts_verified'] and row['model_source'] == 'local'
+                       for row in health['runtime_models'].values())
 
             docker('exec', live_name, 'python', 'tools/offline_guard.py', 'tools.http_smoke',
                    '--base-url', 'http://127.0.0.1:8000',
