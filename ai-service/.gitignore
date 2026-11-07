@@ -1,0 +1,25 @@
+.env
+.env.*
+!.env.example
+.venv*/
+.cache/
+.local_data/
+PRIVATE_WATER_REPLAY/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.pt
+*.joblib
+!model_artifacts/
+!model_artifacts/**/*.pt
+!model_artifacts/**/*.joblib
+*.sqlite*
+*.db
+*.zip
+uploads/
+state/
+replay/water/
+
+# Machine-generated ML settings and caches
+/Ultralytics/
+/runs/

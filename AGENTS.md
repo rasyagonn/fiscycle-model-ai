@@ -11,6 +11,21 @@ Act as a careful AI engineering assistant to Rasya. Build two **experimentally v
 
 **Read this file and `SKILL.md` before touching the project.** Use the current implementation addendum below for filesystem placement; use the older phase sections as scientific constraints and history.
 
+## Standalone handover addendum — 7 November 2026
+
+The owner explicitly authorized shipping the verified LOCAL RC2 AI Service to this
+repository's `main`. The current developer runtime is **`ai-service/`**. Preserve
+the root `app/` as legacy research/dashboard code. Do not import a team application
+or another repository's frontend/backend. `fiscycle-ai-service/` is an ignored local
+HF/release working directory, not the developer runtime. The older placement rules
+below describe research history and do not override this current authorized layout.
+
+Read `README.md`, `docs/INTEGRATION.md` and `docs/VERIFICATION.md` for handover.
+Keep frozen `.agents/skills/`, model checkpoints and exact A2 v3 preprocessing unchanged.
+Only approved bundled runtime artifacts under `ai-service/model_artifacts/` are allowed
+in Git. Never commit private Water seed/fixtures, environments, secrets or runtime state.
+Old v2.1.0 reports are in `docs/archive/v2.1.0/` and are not the active API contract.
+
 ## Current implementation addendum — 5 November 2026
 
 The earlier Phase 0 contract below is preserved as the scientific workflow history, but it no longer describes the actual filesystem or current authorization. The user has explicitly authorized a single modular FastAPI application after model evaluation. Current locations:

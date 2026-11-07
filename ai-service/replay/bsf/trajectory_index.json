@@ -1,0 +1,130 @@
+[
+  {
+    "trajectory_id": "45-1",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_45",
+    "replicate_number": 1,
+    "moisture_percent": 45.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "45-2",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_45",
+    "replicate_number": 2,
+    "moisture_percent": 45.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "45-3",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_45",
+    "replicate_number": 3,
+    "moisture_percent": 45.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "45-4",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_45",
+    "replicate_number": 4,
+    "moisture_percent": 45.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "55-1",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_55",
+    "replicate_number": 1,
+    "moisture_percent": 55.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "55-2",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_55",
+    "replicate_number": 2,
+    "moisture_percent": 55.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "55-3",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_55",
+    "replicate_number": 3,
+    "moisture_percent": 55.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "55-4",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_55",
+    "replicate_number": 4,
+    "moisture_percent": 55.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "65-1",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_65",
+    "replicate_number": 1,
+    "moisture_percent": 65.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "65-2",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_65",
+    "replicate_number": 2,
+    "moisture_percent": 65.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "65-3",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_65",
+    "replicate_number": 3,
+    "moisture_percent": 65.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "65-4",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_65",
+    "replicate_number": 4,
+    "moisture_percent": 65.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "75-1",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_75",
+    "replicate_number": 1,
+    "moisture_percent": 75.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "75-2",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_75",
+    "replicate_number": 2,
+    "moisture_percent": 75.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "75-3",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_75",
+    "replicate_number": 3,
+    "moisture_percent": 75.0,
+    "observation_count": 19
+  },
+  {
+    "trajectory_id": "75-4",
+    "curation_experiment_id": "mendeley_k435zc736t_v1",
+    "treatment_id": "moisture_75",
+    "replicate_number": 4,
+    "moisture_percent": 75.0,
+    "observation_count": 19
+  }
+]

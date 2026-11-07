@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "timestamp": "2026-11-07T13:22:08.018570+00:00",
+  "base_url": "http://127.0.0.1:<ephemeral-test-port>",
+  "checks": [
+    {
+      "check": "actual HTTP startup /health",
+      "status": "PASS"
+    },
+    {
+      "check": "/docs",
+      "status": "PASS"
+    },
+    {
+      "check": "all four models loaded",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 real image",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 to A2 photo and DSS",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 exact v3 inference",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 real estimator",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 development replay",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 replay inference",
+      "status": "PASS"
+    },
+    {
+      "check": "BSF DSS",
+      "status": "PASS"
+    },
+    {
+      "check": "Water nine numeric predictions",
+      "status": "PASS"
+    },
+    {
+      "check": "Water rule-only DSS scenario",
+      "status": "PASS"
+    },
+    {
+      "check": "Water replay session",
+      "status": "PASS"
+    },
+    {
+      "check": "Water paired replay metrics",
+      "status": "PASS"
+    },
+    {
+      "check": "curated gallery 16 selected only",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 original photo bytes",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 curated inference",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 original photo bytes",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 curated inference",
+      "status": "PASS"
+    },
+    {
+      "check": "invalid bytes rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "schema violation rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "missing service token rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "wrong service token rejected",
+      "status": "PASS"
+    }
+  ],
+  "scope": "ACTUAL_HTTP_NOT_TESTCLIENT",
+  "model_source": "local"
+}

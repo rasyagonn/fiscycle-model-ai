@@ -1,0 +1,13 @@
+{
+  "models/mvp_v2/manifest.json": "4a3d2eee1b7b7ac8c0df1d37d494a3a3f9f29cb056e30852a1884e34a11f67de",
+  "models/mvp_v2/ph_120m_v2.joblib": "9db72b34a76bedb54ba33652617a38ad194235ff43235710a77930c397e2cbcf",
+  "models/mvp_v2/ph_30m_v2.joblib": "17570b1e67726e9f3b36c8147959621d6188e57f12bebb172348de566d4cdff7",
+  "models/mvp_v2/ph_60m_v2.joblib": "8a13a40a4e9b7718ada40bc1d1c35b97bebb0cce507b3902926955a030761f7f",
+  "models/mvp_v2/temperature_c_120m_v2.joblib": "89fb90f8f640043a7287d52756316671de996c6abeedc763cf9a39f14e962c1b",
+  "models/mvp_v2/temperature_c_60m_v2.joblib": "a8efdc19f6f53c7ce87c2f58e7f41a83fda58b17151b2432d3da06787834faf2",
+  "models/mvp_v2/turbidity_ntu_30m_v2.joblib": "c81866f2a988af580a86f560e9e04064265e86f59ee68f096eb0df4cb98d88ed",
+  "models/mvp_v2/turbidity_ntu_60m_v2.joblib": "3e8ad92e5e1911bb7d556d9c995a337b2a6d72d4ee14e1da9446623c76ddb886",
+  "README.md": "05ef81f968d3a3abe82d0893dce07df1b101a268ea24a250ed801012d02aa4de",
+  "requirements-runtime.txt": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e",
+  "runtime_contract.json": "ff35a015339bf81eb805d6a1d5b03b607352fa23066efcdec0004b08fe761b6d"
+}

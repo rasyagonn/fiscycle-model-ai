@@ -1,0 +1,3029 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fiscycle AI Service",
+    "description": "Dedicated inference/DSS/replay API. Water historical replay; BSF RESEARCH_PROTOTYPE / NOT_FIELD_VALIDATED. Main backend owns users, farms, ponds and product history.",
+    "version": "3.0.0-rc2-local"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/models": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Models",
+        "operationId": "models_api_v1_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/health": {
+      "get": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Water Health",
+        "operationId": "water_health_water_quality_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/models": {
+      "get": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Models",
+        "operationId": "models_water_quality_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/analyze": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Analyze",
+        "operationId": "analyze_water_quality_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/periods": {
+      "get": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Replay Periods",
+        "operationId": "replay_periods_water_quality_replay_periods_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Create Replay",
+        "operationId": "create_replay_water_quality_replay_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplayCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/start": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Start Replay",
+        "operationId": "start_replay_water_quality_replay_sessions__session_id__start_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/pause": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Pause Replay",
+        "operationId": "pause_replay_water_quality_replay_sessions__session_id__pause_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/next": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Next Replay",
+        "operationId": "next_replay_water_quality_replay_sessions__session_id__next_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/reset": {
+      "post": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Reset Replay",
+        "operationId": "reset_replay_water_quality_replay_sessions__session_id__reset_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}": {
+      "get": {
+        "tags": [
+          "Water Quality"
+        ],
+        "summary": "Get Replay",
+        "operationId": "get_replay_water_quality_replay_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/health": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Health",
+        "operationId": "health_api_v1_bsf_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/models": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Models",
+        "operationId": "models_api_v1_bsf_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/segment": {
+      "post": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Segment",
+        "operationId": "segment_api_v1_bsf_segment_post",
+        "parameters": [
+          {
+            "name": "confidence",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "maximum": 0.99,
+              "minimum": 0.01,
+              "default": 0.25,
+              "title": "Confidence"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/webp": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/analyze-photo": {
+      "post": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Analyze Photo Endpoint",
+        "operationId": "analyze_photo_endpoint_api_v1_bsf_analyze_photo_post",
+        "requestBody": {
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/webp": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/estimate-weight": {
+      "post": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Estimate Weight",
+        "operationId": "estimate_weight_api_v1_bsf_estimate_weight_post",
+        "parameters": [
+          {
+            "name": "x0",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "X0"
+            }
+          },
+          {
+            "name": "y0",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Y0"
+            }
+          },
+          {
+            "name": "x1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "X1"
+            }
+          },
+          {
+            "name": "y1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Y1"
+            }
+          },
+          {
+            "name": "reviewed_roi",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Reviewed Roi"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/webp": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/replay/trajectories": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Trajectories",
+        "operationId": "trajectories_api_v1_bsf_replay_trajectories_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/replay/{trajectory_id}": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Replay",
+        "operationId": "replay_api_v1_bsf_replay__trajectory_id__get",
+        "parameters": [
+          {
+            "name": "trajectory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trajectory Id"
+            }
+          },
+          {
+            "name": "revealed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Revealed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/overview": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Overview",
+        "operationId": "overview_api_v1_bsf_overview_get",
+        "parameters": [
+          {
+            "name": "trajectory_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Trajectory Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/forecast": {
+      "post": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Forecast",
+        "operationId": "forecast_api_v1_bsf_forecast_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForecastInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/factors": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Factors",
+        "operationId": "factors_api_v1_bsf_factors_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/rules": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Rules",
+        "operationId": "rules_api_v1_bsf_rules_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/decision-support": {
+      "post": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Decision Support",
+        "operationId": "decision_support_api_v1_bsf_decision_support_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/history": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "History",
+        "operationId": "history_api_v1_bsf_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/history/{record_id}": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "History Detail",
+        "operationId": "history_detail_api_v1_bsf_history__record_id__get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/recommendations/{record_id}": {
+      "get": {
+        "tags": [
+          "Smart BSF Intelligence"
+        ],
+        "summary": "Recommendation",
+        "operationId": "recommendation_api_v1_bsf_recommendations__record_id__get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/rules": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Water Rules",
+        "operationId": "water_rules_water_quality_rules_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/history": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Water History",
+        "operationId": "water_history_water_quality_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 30,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/history/{record_id}": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Water History Record",
+        "operationId": "water_history_record_water_quality_history__record_id__get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/snapshot": {
+      "post": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Snapshot",
+        "operationId": "snapshot_water_quality_replay_sessions__session_id__snapshot_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/scenario": {
+      "post": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Scenario",
+        "operationId": "scenario_water_quality_scenario_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Scenario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/water-quality/replay/sessions/{session_id}/advance": {
+      "post": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Advance",
+        "operationId": "advance_water_quality_replay_sessions__session_id__advance_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "steps",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 80,
+              "minimum": 1,
+              "default": 25,
+              "title": "Steps"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/demo/catalog": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Demos",
+        "operationId": "demos_api_v1_demo_catalog_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/demo/photo": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Example Photo",
+        "operationId": "example_photo_api_v1_demo_photo_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf-research/treatment-comparison": {
+      "get": {
+        "tags": [
+          "Integrated Intelligence"
+        ],
+        "summary": "Treatment Comparison",
+        "operationId": "treatment_comparison_api_v1_bsf_research_treatment_comparison_get",
+        "parameters": [
+          {
+            "name": "revealed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 19,
+              "minimum": 2,
+              "default": 3,
+              "title": "Revealed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/demo-gallery": {
+      "get": {
+        "tags": [
+          "Curated Demo Gallery"
+        ],
+        "summary": "Images",
+        "operationId": "images_api_v1_bsf_demo_gallery_get",
+        "parameters": [
+          {
+            "name": "track",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(A1|A2)$"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Track"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/demo-gallery/{image_id}": {
+      "get": {
+        "tags": [
+          "Curated Demo Gallery"
+        ],
+        "summary": "Image",
+        "operationId": "image_api_v1_bsf_demo_gallery__image_id__get",
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/demo-gallery/{image_id}/content": {
+      "get": {
+        "tags": [
+          "Curated Demo Gallery"
+        ],
+        "summary": "Content",
+        "operationId": "content_api_v1_bsf_demo_gallery__image_id__content_get",
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image Id"
+            }
+          },
+          {
+            "name": "thumbnail",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Thumbnail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/bsf/demo-gallery/{image_id}/analyze": {
+      "post": {
+        "tags": [
+          "Curated Demo Gallery"
+        ],
+        "summary": "Analyze",
+        "operationId": "analyze_api_v1_bsf_demo_gallery__image_id__analyze_post",
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/health": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Water Health",
+        "operationId": "water_health_api_v1_water_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/models": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Models",
+        "operationId": "models_api_v1_water_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/analyze": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Analyze",
+        "operationId": "analyze_api_v1_water_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/periods": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Replay Periods",
+        "operationId": "replay_periods_api_v1_water_replay_periods_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Create Replay",
+        "operationId": "create_replay_api_v1_water_replay_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplayCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/start": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Start Replay",
+        "operationId": "start_replay_api_v1_water_replay_sessions__session_id__start_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/pause": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Pause Replay",
+        "operationId": "pause_replay_api_v1_water_replay_sessions__session_id__pause_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/next": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Next Replay",
+        "operationId": "next_replay_api_v1_water_replay_sessions__session_id__next_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/reset": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Reset Replay",
+        "operationId": "reset_replay_api_v1_water_replay_sessions__session_id__reset_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Get Replay",
+        "operationId": "get_replay_api_v1_water_replay_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/rules": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Water Rules",
+        "operationId": "water_rules_api_v1_water_rules_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/history": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Water History",
+        "operationId": "water_history_api_v1_water_history_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 30,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/history/{record_id}": {
+      "get": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Water History Record",
+        "operationId": "water_history_record_api_v1_water_history__record_id__get",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/snapshot": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Snapshot",
+        "operationId": "snapshot_api_v1_water_replay_sessions__session_id__snapshot_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/scenario": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Scenario",
+        "operationId": "scenario_api_v1_water_scenario_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Scenario"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water/replay/sessions/{session_id}/advance": {
+      "post": {
+        "tags": [
+          "Water v1"
+        ],
+        "summary": "Advance",
+        "operationId": "advance_api_v1_water_replay_sessions__session_id__advance_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "steps",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 80,
+              "minimum": 1,
+              "default": 25,
+              "title": "Steps"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceBearer": []
+          },
+          {
+            "ServiceHeader": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalyzeRequest": {
+        "properties": {
+          "pond_id": {
+            "type": "string",
+            "title": "Pond Id"
+          },
+          "mode": {
+            "type": "string",
+            "const": "historical_replay",
+            "title": "Mode"
+          },
+          "current_timestamp": {
+            "type": "string",
+            "title": "Current Timestamp"
+          },
+          "readings": {
+            "items": {
+              "$ref": "#/components/schemas/Reading"
+            },
+            "type": "array",
+            "maxItems": 1000,
+            "title": "Readings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "pond_id",
+          "mode",
+          "current_timestamp"
+        ],
+        "title": "AnalyzeRequest"
+      },
+      "DecisionInput": {
+        "properties": {
+          "data_mode": {
+            "type": "string",
+            "enum": [
+              "HISTORICAL_RESEARCH",
+              "USER_ENTERED",
+              "SIMULATED"
+            ],
+            "title": "Data Mode"
+          },
+          "trajectory_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trajectory Id"
+          },
+          "revealed": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revealed"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/Observation"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Observations"
+          },
+          "target_weight_mg": {
+            "anyOf": [
+              {
+                "type": "number",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Weight Mg"
+          },
+          "moisture_percent": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Moisture Percent"
+          },
+          "substrate_temperature_c": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Substrate Temperature C"
+          },
+          "substrate_type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Substrate Type"
+          },
+          "image_record_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Record Id"
+          },
+          "batch_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Batch Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data_mode"
+        ],
+        "title": "DecisionInput"
+      },
+      "ForecastInput": {
+        "properties": {
+          "input_provenance": {
+            "type": "string",
+            "enum": [
+              "USER_ENTERED_MEASURED_HISTORY",
+              "SYNTHETIC_SCENARIO"
+            ],
+            "title": "Input Provenance"
+          },
+          "moisture_percent": {
+            "type": "number",
+            "title": "Moisture Percent"
+          },
+          "elapsed_days": {
+            "type": "number",
+            "title": "Elapsed Days"
+          },
+          "current_weight_mg": {
+            "type": "number",
+            "title": "Current Weight Mg"
+          },
+          "previous_weight_mg": {
+            "type": "number",
+            "title": "Previous Weight Mg"
+          },
+          "recent_growth_mg_per_day": {
+            "type": "number",
+            "title": "Recent Growth Mg Per Day"
+          },
+          "forecast_horizon_days": {
+            "type": "number",
+            "title": "Forecast Horizon Days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "input_provenance",
+          "moisture_percent",
+          "elapsed_days",
+          "current_weight_mg",
+          "previous_weight_mg",
+          "recent_growth_mg_per_day",
+          "forecast_horizon_days"
+        ],
+        "title": "ForecastInput"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Observation": {
+        "properties": {
+          "day": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Day"
+          },
+          "measured_weight_mg": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Measured Weight Mg"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "day",
+          "measured_weight_mg"
+        ],
+        "title": "Observation"
+      },
+      "Reading": {
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "ph": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ph"
+          },
+          "temperature_c": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temperature C"
+          },
+          "turbidity_ntu": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Turbidity Ntu"
+          },
+          "pond_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pond Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "timestamp",
+          "ph",
+          "temperature_c",
+          "turbidity_ntu"
+        ],
+        "title": "Reading"
+      },
+      "ReplayCreateRequest": {
+        "properties": {
+          "start": {
+            "type": "string",
+            "title": "Start"
+          },
+          "end": {
+            "type": "string",
+            "title": "End"
+          },
+          "pond_id": {
+            "type": "string",
+            "title": "Pond Id",
+            "default": "fiscycle_local_pond_unknown"
+          },
+          "replace_session_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{32}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Replace Session Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start",
+          "end"
+        ],
+        "title": "ReplayCreateRequest"
+      },
+      "Scenario": {
+        "properties": {
+          "history_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "History Id"
+          },
+          "input_state": {
+            "type": "string",
+            "enum": [
+              "UNCHANGED",
+              "STALE",
+              "SENSOR_ERROR"
+            ],
+            "title": "Input State"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "history_id",
+          "input_state"
+        ],
+        "title": "Scenario"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "ServiceBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "ServiceHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Fiscycle-Service-Token",
+        "description": "Alternative for private HF Space proxy authentication; keep this secret server-side."
+      }
+    }
+  },
+  "request_id": "25d04ead3e9c4c58acb45f3792489616",
+  "timestamp": "2026-11-07T18:41:45.545682+07:00",
+  "runtime_models": {
+    "bsf_a1": {
+      "model_name": "bsf_a1",
+      "model_version": "a1_initial",
+      "preprocessing_version": "yolo11n-seg-320",
+      "model_source": "local",
+      "repo_id": "gonnn123/fiscycle-bsf-a1",
+      "requested_revision": null,
+      "resolved_revision": null,
+      "model_checksums": {
+        "hasil/model_a_training_v1/a1_initial/weights/best.pt": "b3fe49e24ca70bbd82505ba70b333f6a9fc9a21e83ca6672d81a12ec88658534"
+      },
+      "artifacts_verified": true,
+      "error": null,
+      "cache_behavior": "LOCAL_CHECKSUM_VERIFIED",
+      "loaded": true
+    },
+    "bsf_a2": {
+      "model_name": "bsf_a2",
+      "model_version": "model_a2_training_v3",
+      "preprocessing_version": "fixed_native_pixel_canvas_v1",
+      "model_source": "local",
+      "repo_id": "gonnn123/fiscycle-bsf-a2-v3",
+      "requested_revision": null,
+      "resolved_revision": null,
+      "model_checksums": {
+        "hasil/model_a2_training_v3/best.pt": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b",
+        "hasil/model_a2_training_v3/preprocessing_config.json": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e",
+        "hasil/model_a2_training_v3/COMPLETE.json": "0131c9e6a0caf8c65ba81043e41a3efa7a4a32fcee21b76ad6b37b97559ace09"
+      },
+      "artifacts_verified": true,
+      "error": null,
+      "cache_behavior": "LOCAL_CHECKSUM_VERIFIED",
+      "loaded": true
+    }
+  },
+  "runtime_metadata_scope": "CURRENT_SERVER_AT_RESPONSE",
+  "model_name": [
+    "bsf_a1",
+    "bsf_a2"
+  ],
+  "model_version": {
+    "bsf_a1": "a1_initial",
+    "bsf_a2": "model_a2_training_v3"
+  },
+  "preprocessing_version": {
+    "bsf_a1": "yolo11n-seg-320",
+    "bsf_a2": "fixed_native_pixel_canvas_v1"
+  },
+  "model_revision": {
+    "bsf_a1": null,
+    "bsf_a2": null
+  },
+  "input_source": "SERVICE_METADATA",
+  "input_provenance": {
+    "source": "SERVICE_METADATA",
+    "caller_declared": null,
+    "historical_not_live": false
+  },
+  "warnings": []
+}

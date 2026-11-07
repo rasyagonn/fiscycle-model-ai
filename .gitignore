@@ -1,6 +1,6 @@
-# Source code and documentation stay in Git. Runtime data/models are distributed
-# separately using ARTIFACTS.json. Ignoring an artifact does NOT remove it from
-# deployment: FISCYCLE_GALLERY_DATA.zip is REQUIRED for the full MVP gallery.
+# Standalone ai-service includes approved runtime models and 16 demo images.
+# Raw/private research data, caches, environments and old ZIPs stay outside Git.
+# ai-service/.gitignore explicitly allows only its bundled model_artifacts/.
 
 # Generated release packages and build staging
 /FISCYCLE_DEV_HANDOVER/
@@ -146,3 +146,16 @@ events.out.tfevents.*
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Standalone runtime handover: only ai-service/ is shipped to developers.
+/fiscycle-ai-service/
+/PRIVATE_WATER_REPLAY/
+/FISCYCLE_PRIVATE_REPLAY/
+/FISCYCLE_CONTINUITY_NOTES_*/
+/FISCYCLE_MODEL_RESULTS/
+/FISCYCLE_AI_SERVICE*.sha256
+/app/export_all_model_figures.py
+/app/export_approved_model_figures.py
+/app/export_model_results.py
+/app/prepare_ai_service.py
+/app/prepare_hf_materials.py

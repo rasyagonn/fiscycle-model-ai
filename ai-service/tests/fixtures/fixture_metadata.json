@@ -1,0 +1,19 @@
+{
+  "a1": {
+    "file": "a1_development_train.jpg",
+    "sha256": "02365f0dc6837ffd52d269e1ac293fd32ec477dd627f62004a7f43918cc07399"
+  },
+  "a2": {
+    "file": "a2_development_train.jpg",
+    "sha256": "943747a6bfb94add42acd4fa25354784dbf449611ef80055e1f39afec31ddf01",
+    "roi_bbox": [
+      2045,
+      981,
+      2807,
+      2075
+    ],
+    "source_id": "A2_0001"
+  },
+  "source": "Geissmann, Black Soldier Fly detection, phenotyping and sex prediction dataset, Zenodo v1, DOI 10.5281/zenodo.13359376, CC BY 4.0",
+  "usage": "Two development training images solely for executable smoke tests; not representative validation data."
+}

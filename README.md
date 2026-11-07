@@ -1,79 +1,65 @@
-# Fiscycle AI — mulai di sini
+# Fiscycle AI Service
 
-Repository ini menyediakan layanan AI untuk **Water Quality** dan **Smart BSF**. Developer produk dapat membuat UI dan endpoint publik sendiri, lalu menghubungkannya ke satu layanan FastAPI ini. Tidak perlu melatih ulang model.
+Layanan FastAPI mandiri untuk **Water Quality dan Smart BSF A1, A2 v3, B1**.
+Tim produk menghubungkannya ke backend dan UI sendiri melalui HTTP.
+Model lokal, preprocessing, replay B1 dan 16 foto demo sudah tersedia di Git.
+Tidak perlu training ulang, Hugging Face, atau ZIP galeri 224 foto untuk runtime ini.
 
-**Status:** paket telah diuji pada lingkungan lokal Windows CPU. Deployment online, instalasi baru di server, dan integrasi aplikasi tim belum diverifikasi. Dashboard bawaan adalah alat demo/QA internal.
+**Mulai dari [`ai-service/`](ai-service/README.md).** Release `3.0.0-rc2-local`
+telah diuji di Windows CPU. Status checkout terbaru ada di
+[hasil verifikasi](docs/VERIFICATION.md). Deployment publik dan Docker belum diverifikasi.
 
-## 1. Unduh dua paket
+## Jalankan lokal
 
-Buka **[Release MVP v2.1.0](https://github.com/rasyagonn/fiscycle-model-ai/releases/tag/v2.1.0-mvp)** dengan akun yang memiliki akses repository, lalu unduh:
-
-| File | Gunanya |
-|---|---|
-| `FISCYCLE_DEV_HANDOVER.zip` | Layanan siap dijalankan, checkpoint, preprocessing, dua dataset replay, dokumentasi dan kontrak API. |
-| `FISCYCLE_GALLERY_DATA.zip` | Foto resolusi penuh untuk galeri BSF lengkap dan inferensi dari foto galeri. Wajib untuk scope galeri MVP saat ini. |
-
-Clone repository atau unduhan otomatis **Source code** saja belum menyertakan model dan dataset runtime. Ukuran dan SHA-256 kedua paket tercatat di [ARTIFACTS.json](ARTIFACTS.json).
-
-## 2. Jalankan API secara internal
-
-Ekstrak `FISCYCLE_DEV_HANDOVER.zip`. Buka terminal pada folder paket yang berisi `verify_checksums.py` dan `service/`. Paket utama diperiksa sebelum menambahkan data galeri.
-
-Dengan Python 3.13 pada Windows PowerShell:
+Prasyarat: Python **3.13 64-bit**, Git, serta internet untuk instalasi dependensi pertama.
+Dari PowerShell:
 
 ```powershell
-python verify_checksums.py
-Copy-Item -LiteralPath "D:\LOKASI_UNDUHAN\FISCYCLE_GALLERY_DATA.zip" -Destination .\service\
-cd service
-python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt
-.venv\Scripts\python verify_package.py
-.venv\Scripts\python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
+git clone https://github.com/rasyagonn/fiscycle-model-ai.git
+cd fiscycle-model-ai/ai-service
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8001 --workers 1
 ```
 
-Ganti `D:\LOKASI_UNDUHAN` dengan lokasi ZIP galeri di komputer developer. **Biarkan ZIP galeri tetap terkompresi.** Hentikan langkah berikutnya jika pemeriksaan atau instalasi gagal; simpan output error untuk diagnosis. Instalasi dependensi dari nol tetap perlu diuji di komputer/server penerima.
+Buka **http://127.0.0.1:8001/docs** untuk mencoba API dan
+http://127.0.0.1:8001/health untuk melihat kesiapan model.
+Alternatif Windows: klik `ai-service/JALANKAN_WINDOWS.cmd`.
+Tidak ada frontend produk yang perlu dijalankan dari repository ini.
 
-Setelah startup berhasil, buka:
+## Untuk teman developer
 
-- Kontrak API interaktif: http://127.0.0.1:8000/docs
-- Demo terpadu internal: http://127.0.0.1:8000/ecosystem
-- Galeri BSF: http://127.0.0.1:8000/bsf-intelligence#gallery
-
-## 3. Integrasikan ke aplikasi tim
-
-Baca **[panduan integrasi produk](FISCYCLE_TEAM_INTEGRATION_GUIDE.md)**. Salinannya tersedia dalam paket di `docs/PRODUCT_MVP_INTEGRATION_GUIDE.md`; kontrak lengkap ada di `openapi.json` paket dan `/docs` saat layanan berjalan.
-
-Alur integrasi: **UI Fiscycle → backend produk dengan login/otorisasi → layanan AI privat**. Tim dapat memakai framework, desain, dan URL publik sendiri. Secret gateway AI disimpan di server.
-
-| Fitur | Route awal yang tersedia |
+| Kebutuhan | Baca |
 |---|---|
-| Analisis foto BSF A1 → A2 v3 | `POST /api/v1/bsf/analyze-photo` |
-| Forecast pertumbuhan B1 | `POST /api/v1/bsf/forecast` |
-| Historical replay BSF | `GET /api/v1/bsf/replay/trajectories` |
-| Explainable DSS BSF | `POST /api/v1/bsf/decision-support` |
-| Historical replay Water | `GET /water-quality/replay/periods` |
-| Analisis Water A/B/C | `POST /water-quality/analyze` |
+| Menjalankan service | [README AI Service](ai-service/README.md) |
+| Menghubungkan backend dan UI | [Panduan integrasi](docs/INTEGRATION.md) |
+| Endpoint dan request/response | [Daftar endpoint](ai-service/docs/API_ENDPOINTS.md), [OpenAPI](ai-service/docs/OPENAPI.json), `/docs` |
+| Contoh client | [Python](ai-service/examples/python_client.py), [Node.js](ai-service/examples/node_client.mjs) |
+| Tes yang sudah dijalankan dan batasnya | [Verifikasi](docs/VERIFICATION.md) |
+| Batas ilmiah | [Known limitations](ai-service/docs/KNOWN_LIMITATIONS.md) |
 
-Upload foto ke layanan AI memakai **raw image bytes**, bukan multipart atau base64. Detail request, autentikasi, error, state persisten dan deployment tersedia pada panduan integrasi. Contoh startup di atas hanya untuk internal loopback; deployment online membutuhkan konfigurasi server pada panduan tersebut.
+Alur aplikasi: **UI tim → backend tim (login/otorisasi) → AI Service**.
+Service token disimpan di backend. Tim bebas mengubah desain dan endpoint publik
+aplikasinya; checkpoint, urutan fitur dan preprocessing A2 v3 harus dipertahankan.
 
-## File mana yang perlu dibaca?
+## Data dan struktur
 
-| Kebutuhan | Lokasi |
-|---|---|
-| Mulai mencoba | README ini + dua ZIP di Release |
-| Menghubungkan frontend/backend produk | [FISCYCLE_TEAM_INTEGRATION_GUIDE.md](FISCYCLE_TEAM_INTEGRATION_GUIDE.md) |
-| Mengubah implementasi API | [app/README.md](app/README.md), [app/STRUCTURE.md](app/STRUCTURE.md), kode `app/` |
-| Memeriksa bukti pengujian | [FISCYCLE_MVP_VERIFICATION_REPORT.md](FISCYCLE_MVP_VERIFICATION_REPORT.md) |
-| Audit ilmiah atau melanjutkan riset | Laporan `*REPORT.md`, evidence matrix, dan `.agents/skills/` |
+```text
+ai-service/       layanan yang diserahkan ke developer, model dan galeri demo
+docs/            panduan integrasi, verifikasi, serta arsip laporan
+app/             aplikasi riset/dashboard internal versi lama; bukan entry point baru
+.agents/skills/  kode dan catatan riset; tidak diperlukan oleh runtime ai-service
+```
 
-Laporan audit dan folder riset tidak perlu dibaca seluruhnya untuk mencoba paket. Source API yang diedit ada di `app/`; paket ZIP adalah hasil build, sehingga edit pada paket saja tidak memperbarui source repository.
+Replay **Water** membutuhkan CSV privat beserta metadata yang dikirim terpisah
+melalui kanal internal. Set `FISCYCLE_WATER_REPLAY_CSV` ke lokasi CSV di luar Git.
+Tanpa data itu, replay Water mengembalikan **503**; inferensi Water dari request
+yang valid dan modul BSF tetap tersedia. Detail pemasangan ada di panduan integrasi.
+Replay B1 publik dan galeri demo sudah disertakan.
 
-## Batas penggunaan yang harus dipertahankan
+Water adalah historical replay, bukan sensor live. BSF berstatus
+`RESEARCH_PROTOTYPE / NOT_FIELD_VALIDATED`; A1→A2 eksperimental dan A2→B1
+tidak otomatis. DSS belum menjadi ambang biologis yang disahkan ahli.
 
-- Water adalah **historical replay**, belum layanan sensor IoT live yang tervalidasi. Waktu rekaman menggunakan WIB.
-- BSF tetap **RESEARCH_PROTOTYPE / NOT_FIELD_VALIDATED**. Estimasi berat foto A2 bukan pengukuran berat basah B1; rantai A1 → A2 → B1 belum tervalidasi secara ilmiah.
-- Pertahankan label data terukur, historis, prediksi, simulasi, penolakan dan nilai `null` pada UI produk.
-- Seed Water lokal hanya untuk handover developer yang diotorisasi; bukan data berlisensi publik. Galeri BSF memerlukan atribusi yang disertakan dalam paket.
-- Jangan melatih ulang atau mengubah checkpoint, preprocessing A2 v3 dan data riset beku untuk integrasi UI.
-
-**Penerimaan developer:** jalankan verifikasi paket, coba foto BSF dan kedua replay, lalu uji alur UI → backend → AI di staging. GitHub Release bukan deployment API online.
+Laporan dan paket v2.1.0 disimpan sebagai [arsip](docs/archive/v2.1.0/README.md).
+Gunakan `ai-service/` untuk handover terbaru, bukan langkah instalasi dari arsip.

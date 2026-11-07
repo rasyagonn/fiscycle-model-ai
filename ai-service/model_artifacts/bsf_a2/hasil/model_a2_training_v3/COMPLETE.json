@@ -1,0 +1,35 @@
+{
+  "completed_at": "2026-11-06T10:27:50.563014+07:00",
+  "status": "EXPLORATORY_UNVERIFIED_LABELS",
+  "metrics": {
+    "v2": {
+      "n": 152,
+      "MAE_mg": 37.85615951136539,
+      "RMSE_mg": 50.027456848255916,
+      "bias_mg": -18.302154440628854,
+      "R2": 0.11284714004582375
+    },
+    "v3": {
+      "n": 152,
+      "MAE_mg": 17.28840456510845,
+      "RMSE_mg": 22.555757020248915,
+      "bias_mg": -3.4230776335063733,
+      "R2": 0.8196581917401724
+    }
+  },
+  "best_epoch": 18,
+  "epochs_completed": 25,
+  "protected_integrity": "PASS",
+  "inference_smoke": "PASS",
+  "adapter_sha256": "4eef58541d68d77e0a20f4afdcb90c53f649d77ec438a2bb89992cb102ee9862",
+  "files": {
+    "best.pt": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b",
+    "last.pt": "fe88b9756ed1de76fa6f0f0752989ae5ea0b6d2242da279727f29bbaddf69900",
+    "config.json": "ff29737defbe262ad4f93d50a9da1e0779e60f3e3511201c9c975b1b646808a2",
+    "preprocessing_config.json": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e",
+    "development_manifest.csv": "fb37b493a452a560cb6fb36b1a848910e8cd0ef072be2e251341757a5545f0b3",
+    "metrics.json": "216c917f3e5b6230aa23fe44daa94bc9cc1f431e96b2a3a00d22c45e4d78a592",
+    "validation_predictions.csv": "6dcbe92283bb386251e7f109bed8c0fe60d85362560730362539f42a38f4d9b7",
+    "COMPARISON_REPORT.md": "cdcbbc267e33a55b821c16ec501b644e50f3dc031d59a3cb907c2fbca0b21a63"
+  }
+}

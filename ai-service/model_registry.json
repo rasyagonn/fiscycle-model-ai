@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "release": "3.0.0-rc2-local",
+  "models": {
+    "water": {
+      "repo_id": "gonnn123/fiscycle-water-ai",
+      "revision": "dddd80c588cc3ebae476870b6a57d77e97e2c052",
+      "visibility": "private",
+      "status": "BUNDLED_LOCAL_CHECKSUM_VERIFIED",
+      "local_dir": "model_artifacts/water",
+      "domain": "water",
+      "version": "water-replay-v2",
+      "preprocessing_version": "elapsed_time_v2_strict_qa_segments",
+      "files": {
+        "models/mvp_v2/manifest.json": "4a3d2eee1b7b7ac8c0df1d37d494a3a3f9f29cb056e30852a1884e34a11f67de",
+        "models/mvp_v2/ph_120m_v2.joblib": "9db72b34a76bedb54ba33652617a38ad194235ff43235710a77930c397e2cbcf",
+        "models/mvp_v2/ph_30m_v2.joblib": "17570b1e67726e9f3b36c8147959621d6188e57f12bebb172348de566d4cdff7",
+        "models/mvp_v2/ph_60m_v2.joblib": "8a13a40a4e9b7718ada40bc1d1c35b97bebb0cce507b3902926955a030761f7f",
+        "models/mvp_v2/temperature_c_120m_v2.joblib": "89fb90f8f640043a7287d52756316671de996c6abeedc763cf9a39f14e962c1b",
+        "models/mvp_v2/temperature_c_60m_v2.joblib": "a8efdc19f6f53c7ce87c2f58e7f41a83fda58b17151b2432d3da06787834faf2",
+        "models/mvp_v2/turbidity_ntu_30m_v2.joblib": "c81866f2a988af580a86f560e9e04064265e86f59ee68f096eb0df4cb98d88ed",
+        "models/mvp_v2/turbidity_ntu_60m_v2.joblib": "3e8ad92e5e1911bb7d556d9c995a337b2a6d72d4ee14e1da9446623c76ddb886"
+      }
+    },
+    "bsf_a1": {
+      "repo_id": "gonnn123/fiscycle-bsf-a1",
+      "revision": "c0aa24343f6cd5e554bd93acfa59a1fbb76623b4",
+      "visibility": "private",
+      "status": "BUNDLED_LOCAL_CHECKSUM_VERIFIED",
+      "local_dir": "model_artifacts/bsf_a1",
+      "domain": "bsf",
+      "version": "a1_initial",
+      "preprocessing_version": "yolo11n-seg-320",
+      "files": {
+        "hasil/model_a_training_v1/a1_initial/weights/best.pt": "b3fe49e24ca70bbd82505ba70b333f6a9fc9a21e83ca6672d81a12ec88658534"
+      }
+    },
+    "bsf_a2": {
+      "repo_id": "gonnn123/fiscycle-bsf-a2-v3",
+      "revision": "8c81f400789b2acd36bbfe0f868a6939e05611bd",
+      "visibility": "private",
+      "status": "BUNDLED_LOCAL_CHECKSUM_VERIFIED",
+      "local_dir": "model_artifacts/bsf_a2",
+      "domain": "bsf",
+      "version": "model_a2_training_v3",
+      "preprocessing_version": "fixed_native_pixel_canvas_v1",
+      "files": {
+        "hasil/model_a2_training_v3/best.pt": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b",
+        "hasil/model_a2_training_v3/preprocessing_config.json": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e",
+        "hasil/model_a2_training_v3/COMPLETE.json": "0131c9e6a0caf8c65ba81043e41a3efa7a4a32fcee21b76ad6b37b97559ace09"
+      }
+    },
+    "bsf_b1": {
+      "repo_id": "gonnn123/fiscycle-bsf-b1",
+      "revision": "50e3af6fc4a90b50e7badc1244437f035b9145a3",
+      "visibility": "private",
+      "status": "BUNDLED_LOCAL_CHECKSUM_VERIFIED",
+      "local_dir": "model_artifacts/bsf_b1",
+      "domain": "bsf",
+      "version": "bsf_model_b1",
+      "preprocessing_version": "frozen-six-feature-schema",
+      "files": {
+        "models/bsf_model_b1_estimator.joblib": "21c6d09b0ab9b8bcb762781262acb439f0dd61b6c28537c43995bf3ca7733af0",
+        "models/bsf_model_b1_model_metadata.json": "35e6329ced516c30c6ecd86dde9b188a7056667292088215a15697e2c00594c6",
+        "models/bsf_model_b1_uncertainty.json": "ecb385cfea9c13cd67cb289aa249fd8658f79a2162c21b88186e26e7abcd1b31",
+        "models/bsf_b1_inference.py": "87fd6c8dfaaafae329c28df55ae93b4e20585d175b9a33e6361b08502e357486"
+      }
+    }
+  }
+}

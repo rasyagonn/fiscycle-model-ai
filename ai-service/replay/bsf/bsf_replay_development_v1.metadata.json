@@ -1,0 +1,32 @@
+{
+  "version": "bsf_replay_development_v1",
+  "sha256": "a5344e8dedb7ba432d6745cde54ae9be40fdfbf7868f956161c8a86df130aeed",
+  "rows": 288,
+  "replicate_count": 16,
+  "columns": [
+    "curation_experiment_id",
+    "treatment_id",
+    "replicate_number",
+    "trajectory_id",
+    "replicate_id",
+    "moisture_percent",
+    "measurement_index_1based",
+    "elapsed_days",
+    "current_weight_mg",
+    "previous_weight_mg",
+    "previous_elapsed_days"
+  ],
+  "source": "Mendeley Data v1, DOI 10.17632/k435zc736t.1",
+  "license": "CC BY 4.0",
+  "scope": "IN_SAMPLE_DEVELOPMENT_REPLAY",
+  "independent_validation": false,
+  "excluded_final_test_replicates": [
+    "45-5",
+    "55-5",
+    "65-5",
+    "75-5"
+  ],
+  "source_file_sha256": "808af082a132a29053bea9bc43733c5f7b42d3594ce63a1a843ad6d507c3b3fe",
+  "meaning": "Research observations from B1 development folds; no future target is supplied to inference.",
+  "identifier_note": "curation_experiment_id and treatment_id are transparent curation identifiers derived from source DOI and replicate_id, not original published field names."
+}

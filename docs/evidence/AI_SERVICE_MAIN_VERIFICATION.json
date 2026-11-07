@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "release": "3.0.0-rc2-local",
+  "timestamp_wib": "2026-11-07T20:22:40.431214+07:00",
+  "scope": "ACTUAL_OWNER_REPOSITORY_STANDALONE_RUNTIME_WINDOWS_CPU",
+  "pytest": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual_http_checks": 23,
+  "additional_checks": [
+    "Actual OpenAPI contract matches snapshot, excluding per-request ID/timestamp",
+    "Water /next reveals one observation; reset clears replay; early future actuals unavailable",
+    "AI trace persists across actual server restart",
+    "Missing private Water seed gives replay 503; caller Water inference and B1 remain working",
+    "Documented no-token localhost startup works without private dataset",
+    "All frozen research extraction checksums preserved"
+  ],
+  "pip_check": "PASS",
+  "dependency_versions": "MATCH_REQUIREMENTS_LOCK",
+  "hf_imports": "DENIED_DURING_INFERENCE_TESTS",
+  "external_network": "DENIED_EXCEPT_LOOPBACK",
+  "research_storage": "READS_DENIED_DURING_INFERENCE_TESTS",
+  "model_source": "local",
+  "private_water_data": "MOUNTED_FROM_OUTSIDE_REPOSITORY_NOT_COMMITTED",
+  "rc2_identical_service_files": 126,
+  "checkpoint_and_preprocessing_changes": false,
+  "environment": "Existing isolated CPU .venv-runtime reused; not a new dependency installation in this run",
+  "docker": "NOT_RUN_UNAVAILABLE",
+  "remote_deployment": "NOT_DEPLOYED",
+  "linux_macos": "NOT_RUN",
+  "biological_field_validation": "NOT_FIELD_VALIDATED",
+  "remaining_failures": [],
+  "test_server": "STOPPED"
+}

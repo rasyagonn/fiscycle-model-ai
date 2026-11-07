@@ -1,30 +1,72 @@
 {
-  "schema_version": 1,
-  "release_id": "fiscycle-integrated-research-mvp-2.1.0-gallery",
-  "api_version": "2.1.0",
-  "purpose": "Required deployment artifacts are excluded from source Git commits, not from the MVP deployment.",
-  "artifacts": [
+  "schema_version": 2,
+  "release_id": "3.0.0-rc2-local",
+  "runtime_path": "ai-service/",
+  "distribution": "Approved runtime models and demo photos are included directly in this repository; no ZIP or HF access required.",
+  "model_registry": "ai-service/model_registry.json",
+  "models": [
     {
-      "filename": "FISCYCLE_DEV_HANDOVER.zip",
-      "bytes": 22050394,
-      "sha256": "a55015499574b83bb6aea5cf5c9f7caa22019a66170201168cf1daf83e2601a9",
-      "required_for_current_mvp": true,
-      "contents": "Deployable AI runtime, checkpoints, preprocessing, historical replay seeds, gallery metadata/thumbnails and documentation",
-      "setup": "Extract the archive and run the service/ application according to docs/PRODUCT_MVP_INTEGRATION_GUIDE.md.",
-      "distribution": "Private developer handover; local Water seed is not granted a public data license.",
-      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_DEV_HANDOVER.zip"
+      "name": "water",
+      "local_dir": "ai-service/model_artifacts/water",
+      "files_sha256": {
+        "models/mvp_v2/manifest.json": "4a3d2eee1b7b7ac8c0df1d37d494a3a3f9f29cb056e30852a1884e34a11f67de",
+        "models/mvp_v2/ph_120m_v2.joblib": "9db72b34a76bedb54ba33652617a38ad194235ff43235710a77930c397e2cbcf",
+        "models/mvp_v2/ph_30m_v2.joblib": "17570b1e67726e9f3b36c8147959621d6188e57f12bebb172348de566d4cdff7",
+        "models/mvp_v2/ph_60m_v2.joblib": "8a13a40a4e9b7718ada40bc1d1c35b97bebb0cce507b3902926955a030761f7f",
+        "models/mvp_v2/temperature_c_120m_v2.joblib": "89fb90f8f640043a7287d52756316671de996c6abeedc763cf9a39f14e962c1b",
+        "models/mvp_v2/temperature_c_60m_v2.joblib": "a8efdc19f6f53c7ce87c2f58e7f41a83fda58b17151b2432d3da06787834faf2",
+        "models/mvp_v2/turbidity_ntu_30m_v2.joblib": "c81866f2a988af580a86f560e9e04064265e86f59ee68f096eb0df4cb98d88ed",
+        "models/mvp_v2/turbidity_ntu_60m_v2.joblib": "3e8ad92e5e1911bb7d556d9c995a337b2a6d72d4ee14e1da9446623c76ddb886"
+      }
     },
     {
-      "filename": "FISCYCLE_GALLERY_DATA.zip",
-      "bytes": 766100663,
-      "sha256": "3ed81388e1e3b0f2b63643683e3265cef6d83f40234ee22482671f4d7b133c7b",
-      "required_for_current_mvp": true,
-      "contents": "ALL 224 full-resolution BSF test images (46 A1, 178 A2) and 46 original A1 annotation files",
-      "image_count": 224,
-      "setup": "Keep compressed. Put inside the extracted service/ directory or set FISCYCLE_BSF_GALLERY_DATA to its approved server path.",
-      "license": "CC BY 4.0; attribution included in the data bundle.",
-      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_GALLERY_DATA.zip"
+      "name": "bsf_a1",
+      "local_dir": "ai-service/model_artifacts/bsf_a1",
+      "files_sha256": {
+        "hasil/model_a_training_v1/a1_initial/weights/best.pt": "b3fe49e24ca70bbd82505ba70b333f6a9fc9a21e83ca6672d81a12ec88658534"
+      }
+    },
+    {
+      "name": "bsf_a2",
+      "local_dir": "ai-service/model_artifacts/bsf_a2",
+      "files_sha256": {
+        "hasil/model_a2_training_v3/best.pt": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b",
+        "hasil/model_a2_training_v3/preprocessing_config.json": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e",
+        "hasil/model_a2_training_v3/COMPLETE.json": "0131c9e6a0caf8c65ba81043e41a3efa7a4a32fcee21b76ad6b37b97559ace09"
+      }
+    },
+    {
+      "name": "bsf_b1",
+      "local_dir": "ai-service/model_artifacts/bsf_b1",
+      "files_sha256": {
+        "models/bsf_model_b1_estimator.joblib": "21c6d09b0ab9b8bcb762781262acb439f0dd61b6c28537c43995bf3ca7733af0",
+        "models/bsf_model_b1_model_metadata.json": "35e6329ced516c30c6ecd86dde9b188a7056667292088215a15697e2c00594c6",
+        "models/bsf_model_b1_uncertainty.json": "ecb385cfea9c13cd67cb289aa249fd8658f79a2162c21b88186e26e7abcd1b31",
+        "models/bsf_b1_inference.py": "87fd6c8dfaaafae329c28df55ae93b4e20585d175b9a33e6361b08502e357486"
+      }
     }
   ],
-  "handover_instruction": "Supply BOTH files to the team through a separate approved artifact channel. A source-only git clone does not contain model/data files. No artifact has been uploaded by creating this registry."
+  "demo_gallery": {
+    "images": 16,
+    "path": "ai-service/assets/demo_gallery",
+    "full_224_image_zip_required": false
+  },
+  "replay": {
+    "bsf": {
+      "included": true,
+      "path": "ai-service/replay/bsf"
+    },
+    "water": {
+      "included_in_git": false,
+      "configuration": "FISCYCLE_WATER_REPLAY_CSV",
+      "distribution": "Private approved channel; CSV + adjacent metadata JSON; golden fixture only when authorized"
+    }
+  },
+  "source_archive": {
+    "filename": "FISCYCLE_AI_SERVICE_LOCAL_3.0.0-rc2.zip",
+    "sha256": "71500c1a7349ade3b475a16f3870fcc355101fe209073ddc5efe6e4416fd55ca",
+    "included_in_git": false,
+    "required_for_checkout_runtime": false
+  },
+  "legacy_artifacts": "docs/archive/v2.1.0/ARTIFACTS.json"
 }

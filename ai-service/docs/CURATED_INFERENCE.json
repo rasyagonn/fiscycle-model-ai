@@ -1,0 +1,114 @@
+[
+  {
+    "image_id": "88896a9286b791851f6b8e6d",
+    "sample_id": "A1_ba51e87ceb0844f9",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "046ba0a89764e43ae347faf9",
+    "sample_id": "A1_e092cc6a340aa149",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "746693368e6d953ef7962748",
+    "sample_id": "A1_484305379ed1b5b5",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "e83af626100b87fba5a57b02",
+    "sample_id": "A1_d24e82ac960052c2",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "0835fd5628441ce31e1e05f9",
+    "sample_id": "A1_1fe19137f9e84add",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "7dd74529fb95189502fd649e",
+    "sample_id": "A1_0872721aaca9eb61",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "babe3bf458ab9198338e4cf1",
+    "sample_id": "A1_b0bdd92734db1a65",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "032e689866a76216e200d5f5",
+    "sample_id": "A1_b9469efe278ef6c3",
+    "inference_status": "PARTIAL",
+    "predicted_weight_mg": null,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "c78ee3e1bcaa07b4077fdf1e",
+    "sample_id": "A2_1137",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 288.851982317272,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "eb8e57036080da4228737125",
+    "sample_id": "A2_1129",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 238.49174725055684,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "8b4eca00fbdc667d12e0588d",
+    "sample_id": "A2_1091",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 266.9208339522447,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "9cd28335eda01daf911acc2a",
+    "sample_id": "A2_1088",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 284.93228672624787,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "08c0899db7910c16b47b2b77",
+    "sample_id": "A2_1264",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 226.95695803497625,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "3225b837516130ba33b22b90",
+    "sample_id": "A2_1193",
+    "inference_status": "REJECTED",
+    "predicted_weight_mg": null,
+    "rejection_reason": "SHORTCUT_SCREEN"
+  },
+  {
+    "image_id": "d863abb35c3aab5b5c93653f",
+    "sample_id": "A2_1218",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 254.7953984147016,
+    "rejection_reason": null
+  },
+  {
+    "image_id": "69e878d6c98765d9be1a310f",
+    "sample_id": "A2_1111",
+    "inference_status": "SUCCESS",
+    "predicted_weight_mg": 216.63493433371877,
+    "rejection_reason": null
+  }
+]

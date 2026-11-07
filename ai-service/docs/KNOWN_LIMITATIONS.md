@@ -1,0 +1,12 @@
+# Scientific and technical limits
+
+- Water training/replay berasal dari satu kolam. Evaluasi retrospektif, bukan holdout independen baru atau validasi live IoT. Model v2 lokal saja; percobaan Udanor terpisah. Kalibrasi sensor belum diverifikasi. DO/TAN tidak tersedia. Tujuh dari sembilan interval eksperimen undercover terhadap target 90%.
+- Water sensor QA adalah aturan data. Detektor anomaly ML tidak dipromosikan; tidak ada label insiden independen untuk mengklaim precision/recall fault. Enam aturan DSS tidak mengesahkan ambang biologis.
+- A1 validation hanya satu primary group dengan label incomplete. Metrik segmentasi provisional; status SUCCESS/PARTIAL galeri bukan accuracy. Dense count dapat mencapai cap 300. Makna biologis class sumber 0/1 belum pasti.
+- A2 v3 Weight wet/dry belum terkonfirmasi. Skala piksel bukan kalibrasi millimeter dan tidak bebas dari perubahan kamera/jarak. Validation dua primary group; final test satu. MAE deskriptif final 19,141 mg berlaku hanya 130/178 accepted predictions, coverage73,03%; strict reviewed-ROI n=0.
+- Foto galeri demo tidak mewakili seluruh populasi. Delapan A1 dipilih pengguna dan delapan A2 acak atas instruksinya; bukan random evaluation baru. Set final sudah dilepas/tidak blind. Galeri tetap menampilkan abstention/rejection tanpa mengganti sampel.
+- B1 mean next-observation wet weight mg/individu, bukan berat individu foto A2 atau panen kg. Data publik 20 replikasi; hanya empat holdout. Replay produk memakai development/in-sample trajectories. Tidak ada Fiscycle BSF field validation.
+- Experimental A1→A2 tidak tervalidasi sebagai biomassa populasi. Foto parsial/overlap dapat ditolak. Tidak ada A2→B1 otomatis. Rekomendasi DSS harus ditinjau manusia sebelum keputusan budidaya.
+- Satu worker; replay Water dan cache galeri berada di memori, riwayat AI SQLite bersifat runtime trace. Backend utama menyimpan business history dan permissions. Tidak ada SLA/throughput multiuser atau horizontal-scaling validation.
+- Cache HF/mount data harus disediakan dengan izin filesystem yang benar. Credential deployment idealnya read-only untuk model. Linux/Docker/cloud status hanya sesuai laporan aktual, bukan keberadaan config.
+- Paket lokal RC2 membawa empat bundle model dan 16 foto demo. Data Water privat disediakan terpisah dari ai-service untuk testing internal; jangan commit/publikasikan folder PRIVATE_WATER_REPLAY. Tidak membawa data training penuh, full224-gallery ZIP, cache, venv, atau secrets.

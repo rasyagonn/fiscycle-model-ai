@@ -1,3 +1,7 @@
+> **Arsip implementasi riset lama.** Runtime handover aktif ada di
+> [ai-service/](../ai-service/README.md); panduan developer di
+> [docs/INTEGRATION.md](../docs/INTEGRATION.md).
+
 # Struktur aplikasi sumber
 
 ```text

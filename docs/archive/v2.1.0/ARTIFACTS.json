@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "release_id": "fiscycle-integrated-research-mvp-2.1.0-gallery",
+  "api_version": "2.1.0",
+  "purpose": "Required deployment artifacts are excluded from source Git commits, not from the MVP deployment.",
+  "artifacts": [
+    {
+      "filename": "FISCYCLE_DEV_HANDOVER.zip",
+      "bytes": 22050394,
+      "sha256": "a55015499574b83bb6aea5cf5c9f7caa22019a66170201168cf1daf83e2601a9",
+      "required_for_current_mvp": true,
+      "contents": "Deployable AI runtime, checkpoints, preprocessing, historical replay seeds, gallery metadata/thumbnails and documentation",
+      "setup": "Extract the archive and run the service/ application according to docs/PRODUCT_MVP_INTEGRATION_GUIDE.md.",
+      "distribution": "Private developer handover; local Water seed is not granted a public data license.",
+      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_DEV_HANDOVER.zip"
+    },
+    {
+      "filename": "FISCYCLE_GALLERY_DATA.zip",
+      "bytes": 766100663,
+      "sha256": "3ed81388e1e3b0f2b63643683e3265cef6d83f40234ee22482671f4d7b133c7b",
+      "required_for_current_mvp": true,
+      "contents": "ALL 224 full-resolution BSF test images (46 A1, 178 A2) and 46 original A1 annotation files",
+      "image_count": 224,
+      "setup": "Keep compressed. Put inside the extracted service/ directory or set FISCYCLE_BSF_GALLERY_DATA to its approved server path.",
+      "license": "CC BY 4.0; attribution included in the data bundle.",
+      "download_location": "https://github.com/rasyagonn/fiscycle-model-ai/releases/download/v2.1.0-mvp/FISCYCLE_GALLERY_DATA.zip"
+    }
+  ],
+  "handover_instruction": "Supply BOTH files to the team through a separate approved artifact channel. A source-only git clone does not contain model/data files. No artifact has been uploaded by creating this registry."
+}

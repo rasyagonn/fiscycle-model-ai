@@ -1,3 +1,7 @@
+> **Arsip implementasi riset lama.** Runtime handover aktif ada di
+> [ai-service/](../ai-service/README.md); panduan developer di
+> [docs/INTEGRATION.md](../docs/INTEGRATION.md).
+
 # Fiscycle Integrated AI — aplikasi sumber
 
 Sumber aplikasi: `app/`. Model dan data penelitian tetap di `.agents/skills/`. `FISCYCLE_DEV_HANDOVER/` adalah hasil build yang menyertakan seluruh model runtime Water/BSF dan **kedua** seed replay.
