@@ -1,0 +1,52 @@
+{
+  "location": "southeastasia",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/4086d2a4-2376-47f3-9916-0bbce28c7e2d/resourceGroups/rg-fiscycle-ai/providers/Microsoft.ManagedIdentity/userAssignedIdentities/fiscycle-runtime-pull": {}
+    }
+  },
+  "properties": {
+    "managedEnvironmentId": "/subscriptions/4086d2a4-2376-47f3-9916-0bbce28c7e2d/resourceGroups/rg-fiscycle-ai/providers/Microsoft.App/managedEnvironments/fiscycle-ai-env",
+    "workloadProfileName": "Consumption",
+    "configuration": {
+      "activeRevisionsMode": "Single",
+      "secrets": [{"name": "service-token", "value": "REPLACED_LOCALLY_NEVER_COMMIT"}],
+      "registries": [{
+        "server": "ca9edb09a3d8acr.azurecr.io",
+        "identity": "/subscriptions/4086d2a4-2376-47f3-9916-0bbce28c7e2d/resourceGroups/rg-fiscycle-ai/providers/Microsoft.ManagedIdentity/userAssignedIdentities/fiscycle-runtime-pull"
+      }],
+      "ingress": {
+        "external": true,
+        "allowInsecure": false,
+        "targetPort": 8000,
+        "transport": "auto",
+        "traffic": [{"latestRevision": true, "weight": 100}]
+      }
+    },
+    "template": {
+      "containers": [{
+        "name": "ai-service",
+        "image": "REPLACED_WITH_VERIFIED_DIGEST",
+        "resources": {"cpu": 2, "memory": "4Gi"},
+        "env": [
+          {"name": "FISCYCLE_AI_SERVICE_TOKEN", "secretRef": "service-token"},
+          {"name": "FISCYCLE_RUNTIME_ENV", "value": "production"},
+          {"name": "FISCYCLE_MODEL_SOURCE", "value": "local"},
+          {"name": "OMP_NUM_THREADS", "value": "2"},
+          {"name": "MKL_NUM_THREADS", "value": "2"}
+        ],
+        "probes": [
+          {"type": "Startup", "httpGet": {"path": "/health", "port": 8000}, "periodSeconds": 5, "timeoutSeconds": 3, "failureThreshold": 60},
+          {"type": "Readiness", "httpGet": {"path": "/health", "port": 8000}, "periodSeconds": 10, "timeoutSeconds": 3, "failureThreshold": 3},
+          {"type": "Liveness", "httpGet": {"path": "/health", "port": 8000}, "periodSeconds": 30, "timeoutSeconds": 5, "failureThreshold": 5, "initialDelaySeconds": 60}
+        ]
+      }],
+      "scale": {
+        "minReplicas": 0,
+        "maxReplicas": 1,
+        "rules": [{"name": "http", "http": {"metadata": {"concurrentRequests": "1"}}}]
+      }
+    }
+  }
+}

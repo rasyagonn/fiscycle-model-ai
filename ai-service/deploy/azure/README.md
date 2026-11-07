@@ -1,75 +1,58 @@
-# Deploy manual ke Azure — mulai dari image
+﻿# Deployment Azure Fiscycle AI Service
 
-Status: login Azure lokal telah berhasil, subscription Azure for Students Enabled,
-spending limit On. Belum ada resource/image Azure atau URL API yang dibuat.
-Konfigurasi akun dan token lokal berada di cache yang diabaikan Git.
+Runtime tetap `ai-service/`; model dan preprocessing A2 v3 tidak diubah.
 
-## Tahap 1 — build dan uji image di GitHub
+## Jalur deployment aktif
 
-Tidak perlu Docker di laptop dan tidak memakai ACR Tasks. Workflow manual di
-`.github/workflows/build-ai-service.yml` membangun Dockerfile yang ada, menjalankan
-tes container, lalu memublikasikan image ke GitHub Container Registry (GHCR).
-Workflow tidak menjalankan training dan tidak membuat resource Azure.
+1. Push perubahan runtime/workflow ke `main` atau jalankan workflow manual **Build AI Service untuk Azure**.
+2. GitHub membangun image Linux, menjalankan tiga tes retry startup, lalu tes container dan inferensi nyata.
+3. Setelah lulus, GitHub login Azure melalui OIDC dan push ke ACR privat
+   `ca9edb09a3d8acr.azurecr.io/fiscycle-ai-service:<commit-SHA>`.
+4. Operator deploy image berdasarkan **digest** ke Container Apps dan menjalankan pemeriksaan HTTP.
+   Push kode saja belum mengganti container produksi.
 
-Dari root repository:
+GitHub memakai identitas `fiscycle-github-build`, dengan AcrPush hanya pada registry ini.
+Federasi terikat pada repository pemilik dan branch main; subject aktual GitHub menyertakan
+ID pemilik/repository. Runtime memakai identitas berbeda, `fiscycle-runtime-pull`, dengan AcrPull.
+Tidak diperlukan PAT GitHub, secret client Azure, atau password registry dalam repository.
+Client ID, tenant ID dan subscription ID dalam workflow adalah identifier, bukan secret.
 
-```powershell
-git add .github/workflows/build-ai-service.yml ai-service/tools/verify_container.py ai-service/deploy/azure/README.md
-git commit -m "Add manual AI container build for Azure"
-git push origin main
-```
+## Resource dan batas
 
-Di GitHub: **Actions → Build AI Service untuk Azure → Run workflow → main → Run workflow**.
-Jika Actions meminta pengaktifan workflow, aktifkan untuk repository sendiri.
-Jika izin publish package ditolak, periksa Settings → Actions → General → Workflow
-permissions dan kebijakan akun/organisasi. Jangan memasukkan token ke chat atau kode.
+- Resource group: `rg-fiscycle-ai`, region `southeastasia`.
+- Environment: `fiscycle-ai-env`, Consumption.
+- Container App: `fiscycle-ai-service` (status aktual lihat laporan deployment).
+- CPU/RAM: 2 vCPU / 4 GiB; min replicas 0, max replicas 1; satu worker.
+- HTTPS port target 8000; endpoint inferensi memerlukan Bearer service token.
+- Template tanpa secret: [containerapp.template.json](containerapp.template.json).
 
-Tunggu workflow hijau. Buka Summary untuk alamat image dengan tag commit SHA.
-Periksa di profil GitHub → Packages bahwa package `fiscycle-ai-service` tetap **PRIVATE**.
-Jangan mengubah visibility menjadi public untuk mengatasi kesalahan autentikasi.
+Registry Basic dan environment sudah ada sebelum deployment ini. Pemakaian Azure tetap
+mengonsumsi kredit subscription; scale-to-zero bukan jaminan seluruh layanan gratis.
+Jangan mengubah subscription Students menjadi Pay-As-You-Go untuk melewati batas kredit.
 
-Pengujian Linux/Docker belum dijalankan di laptop ini karena Docker Engine tidak
-tersedia. YAML dan kode helper hanya diperiksa statis sebelum commit. Build dan
-pengujian nyata baru dibuktikan oleh hasil workflow, bukan keberadaan file ini.
-Data Water privat tidak diunggah: dua tes pytest dan dua pemeriksaan HTTP terkait
-fixture privat di-skip secara eksplisit. Semua pemeriksaan lain harus lulus sebelum push image.
+## Batas data dan operasi
 
-## Tahap 2 — siapkan Azure Container Apps
+Data Water privat tidak masuk Git, image, atau upload cloud. Tanpa mount privat, replay Water
+mengembalikan 503; Water tetap menerima request inferensi valid. Dua tes pytest dan dua
+pemeriksaan HTTP yang memerlukan fixture Water privat di-skip secara eksplisit.
 
-Lanjutkan setelah image berhasil dibuat. Rencana awal: Consumption, region
-Southeast Asia (diizinkan pada subscription yang diperiksa), 2 vCPU/4 GiB,
-min replicas 0, max replicas 1, target port 8000, HTTPS dan service token.
-Pilihan region tetap perlu diperiksa ulang ketika deploy.
+Sesi replay ada di memori; SQLite history berada pada filesystem sementara container.
+Scale-to-zero/restart dapat menghilangkannya. Backend produk harus menyimpan riwayat bisnis.
+Token service hanya untuk backend, tidak untuk bundle frontend. Model BSF tetap
+RESEARCH_PROTOTYPE / NOT_FIELD_VALIDATED. DSS adalah aturan pemeriksaan teknis manual,
+bukan rekomendasi budidaya berbasis paper/ahli yang tervalidasi.
 
-Azure mendukung image GHCR private. Untuk pull, buat GitHub PAT **classic** dengan
-scope `read:packages` dan simpan sebagai credential registry di Azure; jangan kirim
-di chat atau commit. Token ini terpisah dari `FISCYCLE_AI_SERVICE_TOKEN` milik API.
-Pengeluaran Azure perlu disetujui sebelum membuat resource. Spending limit kredit
-bukan batas anggaran kecil yang otomatis menghentikan resource.
+## Bukti pengujian
 
-GHCR saat pemeriksaan dokumentasi masih membebaskan biaya storage/bandwidth image;
-kuota/biaya GitHub Actions bergantung pada jenis akun dan repository. Azure Container
-Apps memiliki free grant tetapi bukan layanan gratis tanpa batas. Tarif dan jatah
-gratis harus diperiksa sebelum provisioning; jangan mengubah subscription menjadi
-Pay-As-You-Go untuk melewati batas kredit.
+Perbaikan retry menangani ConnectionResetError saat port Docker tersedia lebih awal daripada
+HTTP service. Tiga tes regresi host lulus. Run GitHub `42388365781` lulus build dan seluruh
+pemeriksaan container yang diwajibkan, lalu gagal login OIDC karena subject tidak cocok.
+Federasi sudah disesuaikan dengan subject aktual; hasil deploy berikutnya dicatat terpisah.
+Tidak ada pemeriksaan model yang dihapus untuk meloloskan deployment.
 
-## Tahap 3 — verifikasi API sebelum handover
+## Referensi resmi
 
-Sesudah deployment: uji `/health`, empat model, inferensi nyata, autentikasi,
-galeri, DSS dan replay. Jangan membagikan URL sebagai layanan siap sebelum tes lulus.
-Replay Water memerlukan persetujuan dan pemasangan data privat di cloud secara terpisah.
-Tanpa seed, endpoint replay Water 503; inferensi dari request valid tetap tersedia.
-
-Scale-to-zero/restart mengakhiri sesi replay. Riwayat SQLite pada filesystem
-container sementara juga dapat hilang; backend produk harus menyimpan business
-history sendiri. Jangan mengklaim persistensi cloud sebelum storage diuji.
-DSS BSF saat ini adalah aturan verifikasi teknis manual, belum aturan budidaya
-berbasis paper/ahli yang tervalidasi. Semua batas riset tetap berlaku.
-
-## Rujukan resmi
-
-- [GHCR dan autentikasi](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [Biaya GitHub Packages/GHCR](https://docs.github.com/en/billing/concepts/product-billing/github-packages)
-- [Azure Container Apps dengan GHCR](https://learn.microsoft.com/en-us/azure/container-apps/github-actions)
-- [Billing Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/billing)
-- [Batas ACR Tasks pada kredit gratis](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview)
+- [Azure OIDC dari GitHub](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect)
+- [Managed identity untuk pull image](https://learn.microsoft.com/en-us/azure/container-apps/managed-identity-image-pull)
+- [Billing Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/billing)
+- [Batas storage sementara](https://learn.microsoft.com/en-us/azure/container-apps/storage-mounts)
