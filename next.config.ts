@@ -1,18 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  experimental: {
-    cpus: 1,
-  },
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  experimental: { cpus: 1 },
+  // Tailwind is processed by postcss.config.mjs for both development and production.
 };
 
 export default nextConfig;

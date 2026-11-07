@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scope": "ACTUAL_NEXTJS_TO_FASTAPI_TO_LOCAL_MODELS",
+  "checks": [
+    {
+      "check": "Health: four verified local models through Next.js",
+      "status": "PASS"
+    },
+    {
+      "check": "Bridge health has real readiness, no invented fallback",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 real raw-image inference equals golden",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 multipart upload preserved",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 exact v3 preprocessing/weight through proxy",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 to A2 real orchestration preserves scientific abstention",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 frozen estimator numeric golden",
+      "status": "PASS"
+    },
+    {
+      "check": "Legacy bridge forwards actual model, does not generate predictions",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 development replay and DSS",
+      "status": "PASS"
+    },
+    {
+      "check": "Curated gallery contains exactly 16 approved images",
+      "status": "PASS"
+    },
+    {
+      "check": "A1 gallery original bytes and actual inference",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 gallery original bytes and actual inference",
+      "status": "PASS"
+    },
+    {
+      "check": "Input validation preserves errors rather than fallback success",
+      "status": "PASS"
+    },
+    {
+      "check": "Allowlist rejects arbitrary paths and outbound target injection",
+      "status": "PASS"
+    },
+    {
+      "check": "Oversize upload and cross-origin mutation rejected",
+      "status": "PASS"
+    },
+    {
+      "check": "Browser bearer cannot replace server credential",
+      "status": "PASS"
+    },
+    {
+      "check": "AI history contains actual analysis traces",
+      "status": "PASS"
+    },
+    {
+      "check": "Demo pond ID does not impersonate local sensor dataset",
+      "status": "PASS"
+    },
+    {
+      "check": "Existing telemetry and business matching stay explicitly simulated",
+      "status": "PASS"
+    },
+    {
+      "check": "Water nine predictions match frozen golden through Next.js",
+      "status": "PASS"
+    },
+    {
+      "check": "Private Water replay and matched baseline metrics",
+      "status": "PASS"
+    },
+    {
+      "check": "Water history and schema stay available through same-origin API",
+      "status": "PASS"
+    }
+  ],
+  "remote_deployment": false
+}

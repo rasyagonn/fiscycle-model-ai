@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "created_at_wib": "2026-11-07T19:47:49.182898+07:00",
+  "main_repository": "D:\\project\\Fyscycle\\fiscycle",
+  "scope": "WINDOWS_CPU_ACTUAL_MAIN_REPO_INTEGRATION",
+  "checks": [
+    "Fresh main-repo Python venv: pip check passes",
+    "Documented ai:dev launcher uses main-repo venv and four bundled models",
+    "22 real Next.js -> FastAPI model integration HTTP checks pass",
+    "Ten existing application routes retained with HTTP200",
+    "15 actual Chrome UI checks pass, including existing Golden Thread",
+    "Generated client JS and prerendered HTML contain no service credential",
+    "Production proxy refuses access until operator explicitly enables it",
+    "Stopped upstream yields truthful 503 on both health and inference; no fake predictions",
+    "All copied service/model/preprocessing/gallery files match frozen RC2 bytes",
+    "Private Water seed and golden fixture live outside main repository"
+  ],
+  "integrated_http_checks": 22,
+  "browser_checks": 15,
+  "typecheck": "PASS",
+  "lint": "PASS",
+  "production_build": "PASS",
+  "fresh_python_venv": "D:\\project\\Fyscycle\\fiscycle\\ai-service\\.venv",
+  "docker": "NOT_RUN_UNAVAILABLE",
+  "linux_macos": "NOT_RUN",
+  "cloud": "NOT_DEPLOYED",
+  "production_user_auth": "NOT_IMPLEMENTED_BY_THIS_TASK; existing client-side demo auth; proxy default disabled",
+  "scientific_status": "RESEARCH_PROTOTYPE_NOT_FIELD_VALIDATED",
+  "test_servers": "STOPPED_AFTER_TESTS",
+  "development_server": {
+    "status": "PASS",
+    "scope": "ACTUAL_TURBOPACK_DEVELOPMENT_SERVER",
+    "checks": [
+      "Documented next dev serves /mitra/ai",
+      "Tailwind/PostCSS produces compiled utility CSS",
+      "Development proxy reports missing upstream as 503, not fake readiness"
+    ],
+    "css_bytes": 164494,
+    "test_server": "STOPPED_AFTER_TEST"
+  },
+  "browser_resource_errors": [],
+  "remaining_failures": [],
+  "fixed_existing_issues": [
+    "Webpack build emitted unprocessed Tailwind CSS; shared official PostCSS pipeline now verified in production and Turbopack dev",
+    "Undefined Inter variable prevented font fallback; fallback now valid",
+    "Golden Thread self-test hardcoded an allocation ID already occupied by seed; now checks unique new allocation and actual transaction state without changing seed/allocator",
+    "Manifest referenced missing 192/512 PNGs; exported existing Fiscycle logo into correctly sized icons; browser now has no resource 404s"
+  ]
+}

@@ -1,0 +1,5 @@
+Quentin Geissmann; Black Soldier Fly detection, phenotyping and sex prediction dataset.
+Zenodo v1, DOI 10.5281/zenodo.13359376.
+License: CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
+Original selected photo bytes unchanged. Thumbnails reused from existing research gallery.
+Final test previously released; not blind. No training or prediction-based selection.

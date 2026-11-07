@@ -1,0 +1,235 @@
+{
+  "model_version": "bsf_model_b1",
+  "architecture": "HistGradientBoostingRegressor",
+  "feature_schema": [
+    "moisture_percent",
+    "elapsed_days",
+    "current_weight_mg",
+    "previous_weight_mg",
+    "recent_growth_mg_per_day",
+    "forecast_horizon_days"
+  ],
+  "feature_units": {
+    "moisture_percent": "percent experimental treatment",
+    "elapsed_days": "days",
+    "current_weight_mg": "mg/individual mean wet weight",
+    "previous_weight_mg": "mg/individual mean wet weight",
+    "recent_growth_mg_per_day": "mg/individual/day",
+    "forecast_horizon_days": "days"
+  },
+  "target": "mean next-observation wet weight mg/individual",
+  "horizon_days": {
+    "min": 0.7708333333357587,
+    "max": 1.2083333912014496
+  },
+  "metadata": {
+    "status": "RESEARCH_PROTOTYPE",
+    "validation": "NOT_FIELD_VALIDATED",
+    "method": "hist_gradient_boosting",
+    "parameter_label": "grid_1:{\"l2_regularization\": 10.0, \"learning_rate\": 0.05, \"max_leaf_nodes\": 7, \"min_samples_leaf\": 20}",
+    "features": [
+      "moisture_percent",
+      "elapsed_days",
+      "current_weight_mg",
+      "previous_weight_mg",
+      "recent_growth_mg_per_day",
+      "forecast_horizon_days"
+    ],
+    "target": "target_weight_mg",
+    "target_unit": "mg_per_individual",
+    "supported_moisture_treatments_percent": [
+      45,
+      55,
+      65,
+      75
+    ],
+    "feature_bounds_from_development_data": {
+      "moisture_percent": {
+        "min": 45.0,
+        "max": 75.0
+      },
+      "elapsed_days": {
+        "min": 0.875,
+        "max": 17.947916724537208
+      },
+      "current_weight_mg": {
+        "min": 1.82,
+        "max": 380.79999999999995
+      },
+      "previous_weight_mg": {
+        "min": 1.82,
+        "max": 380.79999999999995
+      },
+      "recent_growth_mg_per_day": {
+        "min": -98.5295480836117,
+        "max": 147.90546388255703
+      },
+      "forecast_horizon_days": {
+        "min": 0.7708333333357587,
+        "max": 1.2083333912014496
+      }
+    },
+    "training_source": "Mendeley Data v1, DOI 10.17632/k435zc736t.1, CC BY 4.0",
+    "development_replicates": [
+      "45-1",
+      "45-2",
+      "45-3",
+      "45-4",
+      "55-1",
+      "55-2",
+      "55-3",
+      "55-4",
+      "65-1",
+      "65-2",
+      "65-3",
+      "65-4",
+      "75-1",
+      "75-2",
+      "75-3",
+      "75-4"
+    ],
+    "excluded_final_test_replicates": [
+      "45-5",
+      "55-5",
+      "65-5",
+      "75-5"
+    ],
+    "seed": 42
+  },
+  "evaluation": {
+    "holdout": {
+      "n": 72,
+      "mae_mg": 17.244598853206398,
+      "rmse_mg": 22.821732452658463,
+      "bias_mg": 1.8250131010188246,
+      "median_abs_error_mg": 13.866910332107409,
+      "p90_abs_error_mg": 39.00556535710635,
+      "max_abs_error_mg": 71.42969834949696,
+      "overprediction_count": 34,
+      "interval_coverage_pct": 91.66666666666666
+    },
+    "methods": [
+      {
+        "method": "hist_gradient_boosting",
+        "mae_mg": 17.2445988532,
+        "rmse_mg": 22.8217324527,
+        "bias_mg": 1.825013101,
+        "n": 72
+      },
+      {
+        "method": "ridge",
+        "mae_mg": 23.9729560225,
+        "rmse_mg": 30.4001175201,
+        "bias_mg": -0.4135401365,
+        "n": 72
+      },
+      {
+        "method": "persistence",
+        "mae_mg": 26.9102222222,
+        "rmse_mg": 35.247838457,
+        "bias_mg": -13.1753888889,
+        "n": 72
+      },
+      {
+        "method": "trend",
+        "mae_mg": 33.4879101169,
+        "rmse_mg": 45.7895657297,
+        "bias_mg": 0.0781638394,
+        "n": 72
+      }
+    ],
+    "cv": [
+      {
+        "method": "hist_gradient_boosting",
+        "parameter_label": "grid_1:{\"l2_regularization\": 10.0, \"learning_rate\": 0.05, \"max_leaf_nodes\": 7, \"min_samples_leaf\": 20}",
+        "cv_mae_mean_mg": 17.9956185679,
+        "cv_mae_std_mg": 1.306218829,
+        "cv_rmse_mean_mg": 23.9445269678,
+        "cv_bias_mean_mg": 0.6413660512
+      },
+      {
+        "method": "ridge",
+        "parameter_label": "alpha=1.0",
+        "cv_mae_mean_mg": 25.6380870666,
+        "cv_mae_std_mg": 1.8223356033,
+        "cv_rmse_mean_mg": 32.1591336244,
+        "cv_bias_mean_mg": 0.0122088669
+      },
+      {
+        "method": "persistence",
+        "parameter_label": null,
+        "cv_mae_mean_mg": 27.6026659722,
+        "cv_mae_std_mg": 1.6455487299,
+        "cv_rmse_mean_mg": 36.5507005261,
+        "cv_bias_mean_mg": -13.1476673611
+      },
+      {
+        "method": "trend",
+        "parameter_label": null,
+        "cv_mae_mean_mg": 35.3946647601,
+        "cv_mae_std_mg": 2.0313417359,
+        "cv_rmse_mean_mg": 48.2904943266,
+        "cv_bias_mean_mg": 0.7370783904
+      }
+    ],
+    "split": {
+      "development_replicates": [
+        "45-1",
+        "45-2",
+        "45-3",
+        "45-4",
+        "55-1",
+        "55-2",
+        "55-3",
+        "55-4",
+        "65-1",
+        "65-2",
+        "65-3",
+        "65-4",
+        "75-1",
+        "75-2",
+        "75-3",
+        "75-4"
+      ],
+      "final_test_replicates": [
+        "45-5",
+        "55-5",
+        "65-5",
+        "75-5"
+      ],
+      "development_samples": 288,
+      "final_test_samples": 72,
+      "fold_validation_replicates": {
+        "1": [
+          "45-1",
+          "55-1",
+          "65-1",
+          "75-1"
+        ],
+        "2": [
+          "45-2",
+          "55-2",
+          "65-2",
+          "75-2"
+        ],
+        "3": [
+          "45-3",
+          "55-3",
+          "65-3",
+          "75-3"
+        ],
+        "4": [
+          "45-4",
+          "55-4",
+          "65-4",
+          "75-4"
+        ]
+      }
+    },
+    "interval_radius_mg": 40.79327196928037
+  },
+  "status": [
+    "RESEARCH_PROTOTYPE",
+    "NOT_FIELD_VALIDATED"
+  ]
+}

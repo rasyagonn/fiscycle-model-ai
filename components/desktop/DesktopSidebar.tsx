@@ -24,6 +24,7 @@ interface NavItem {
 }
 
 const MAIN_NAV_ITEMS: NavItem[] = [
+  { label: 'Pusat AI ? Water & BSF', href: '/desktop/ai', icon: imgLightbulb },
   { label: 'Beranda', href: '/desktop/dashboard', icon: imgHouse },
   { label: 'Kolam & Ikan', href: '/desktop/farms', icon: imgFish },
   { label: 'BSF & Sirkular', href: '/desktop/bsf', icon: imgRecycle },

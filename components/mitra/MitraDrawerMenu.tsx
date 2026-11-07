@@ -51,6 +51,7 @@ const SIRKULAR_LINKS: MenuLink[] = [
 ];
 
 const ANALITIK_LINKS: MenuLink[] = [
+  { label: 'Pusat AI ? Water & BSF', href: '/mitra/ai', icon: Sparkles },
   { label: 'Perangkat IoT Tambak', href: '/mitra/devices', icon: Cpu },
   { label: 'Laporan & Analitik', href: '/mitra/reports', icon: ClipboardList },
   { label: 'Insight & Rekomendasi AI', href: '/mitra/insights', icon: Sparkles },

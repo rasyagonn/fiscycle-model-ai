@@ -1,0 +1,17 @@
+{
+  "method": "fixed_native_pixel_canvas_v1",
+  "canvas_size": 2048,
+  "cnn_size": 224,
+  "padding_rgb": [
+    127,
+    127,
+    127
+  ],
+  "selection": "Smallest power of two >= maximum old ROI side among456 TRAIN IDs only",
+  "train_max_roi_side": 1556,
+  "target_used_for_canvas": false,
+  "validation_used_for_canvas": false,
+  "source_to_cnn_scale": 0.109375,
+  "geometry_policy": "Retain whole old ROI at native pixel size; centre it on constant source-pixel canvas; pad outside old ROI to avoid exposing new ID/ruler pixels; one bilinear resize",
+  "limitation": "No new context outside old clean ROI; residual defects inside that ROI may remain. Pixel scale is not calibrated physical size."
+}

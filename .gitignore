@@ -35,9 +35,16 @@ yarn-error.log*
 .pnpm-debug.log*
 *.log
 
+# Internal AI data and runtime
+/PRIVATE_WATER_REPLAY/
+/.local-data/
+/ai-service/.cache/
+/ai-service/.venv*/
+
 # env files (can opt-in for committing if needed)
 .env*
 .env*.local
+!.env.example
 
 # IDE / Editor
 .idea/

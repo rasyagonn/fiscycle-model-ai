@@ -7,7 +7,9 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ai:dev": "node --env-file-if-exists=.env.local scripts/start-ai.mjs",
+    "test:ai": "node --env-file-if-exists=.env.local scripts/test-ai-integration.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -26,6 +28,7 @@
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "4.3.4",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

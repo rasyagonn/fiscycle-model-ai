@@ -1,5 +1,6 @@
 'use client';
 
+import { AiContextNotice } from '@/components/ai/AiContextNotice';
 import React, { Suspense, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -47,6 +48,7 @@ export default function MitraLayout({
     <div className="min-h-screen bg-slate-100/80 flex justify-center">
       <div className={`w-full max-w-[420px] bg-[#f8fafc] min-h-screen flex flex-col relative shadow-xl shadow-slate-200/50 ${isOnboarding ? '' : 'pb-24'}`}>
         <main className="flex-1 flex flex-col">
+          <AiContextNotice />
           <Suspense fallback={null}>
             {children}
           </Suspense>

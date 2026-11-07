@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "counts": {
+    "A1": 8,
+    "A2": 8,
+    "total": 16
+  },
+  "a1_ids_exact": true,
+  "a2_seed": 20261107,
+  "original_bytes_preserved": true,
+  "original_dimensions_preserved": true,
+  "image_bytes": 33969936,
+  "full_gallery_bundle_unchanged": "3ed81388e1e3b0f2b63643683e3265cef6d83f40234ee22482671f4d7b133c7b",
+  "frozen_manifest_unchanged": "5e509d224b9eb0fb9f5a814d19fe799b2f0576407984504b6d9e5eb3c2245627",
+  "api_integration": "PASS_LOCAL",
+  "inference": true,
+  "training": false,
+  "browser_preview": {
+    "status": "PASS",
+    "images_loaded": 16,
+    "A1_filter": 8,
+    "A2_filter": 8,
+    "original_links_valid": 16
+  },
+  "preparation_tests": {
+    "status": "PASS",
+    "tests": 7
+  },
+  "api_inference_outcomes": {
+    "A1": {
+      "SUCCESS": 2,
+      "PARTIAL": 6
+    },
+    "A2": {
+      "SUCCESS": 7,
+      "REJECTED": 1
+    }
+  }
+}

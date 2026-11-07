@@ -1,0 +1,248 @@
+[
+  {
+    "path": "/health",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/models",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/health",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/models",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/segment",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/analyze-photo",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/estimate-weight",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/replay/trajectories",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/replay/{trajectory_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/overview",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/forecast",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/factors",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/rules",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/decision-support",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/history",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/history/{record_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/recommendations/{record_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/demo/catalog",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/demo/photo",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf-research/treatment-comparison",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/demo-gallery",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/demo-gallery/{image_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/demo-gallery/{image_id}/content",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/bsf/demo-gallery/{image_id}/analyze",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/health",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/models",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/analyze",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/periods",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/start",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/pause",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/next",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/reset",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/rules",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/history",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/history/{record_id}",
+    "methods": [
+      "get"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/snapshot",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/scenario",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/api/v1/water/replay/sessions/{session_id}/advance",
+    "methods": [
+      "post"
+    ]
+  },
+  {
+    "path": "/openapi.json",
+    "methods": [
+      "get"
+    ]
+  }
+]

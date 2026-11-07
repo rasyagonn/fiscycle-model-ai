@@ -1,0 +1,77 @@
+{
+  "model_version": "a1_initial",
+  "architecture": "YOLO11n-seg",
+  "input": "JPEG/PNG/WebP decoded oriented RGB",
+  "inference": {
+    "imgsz": 320,
+    "confidence_default": 0.25,
+    "max_det": 300
+  },
+  "source_class_ids": {
+    "0": "BIOLOGICAL_MEANING_UNKNOWN",
+    "1": "BIOLOGICAL_MEANING_UNKNOWN"
+  },
+  "working_class": "visible_bsf_larva (engineering mapping, not biological equivalence confirmation)",
+  "output": {
+    "instances": "polygon_xy in original oriented image pixels",
+    "count": "visible detected instances only"
+  },
+  "evaluation": {
+    "validation_metrics": {
+      "status": "EXPLORATORY_UNVERIFIED_LABELS",
+      "scope": "development_validation_only",
+      "metrics": {
+        "metrics/precision(B)": 0.835927444606618,
+        "metrics/recall(B)": 0.9611196500324245,
+        "metrics/mAP50(B)": 0.9263010637740685,
+        "metrics/mAP50-95(B)": 0.7785516590783589,
+        "metrics/precision(M)": 0.8381215550377765,
+        "metrics/recall(M)": 0.9577381997614638,
+        "metrics/mAP50(M)": 0.9277149515974682,
+        "metrics/mAP50-95(M)": 0.7255960014475583,
+        "fitness": 1.5041476605259172
+      },
+      "precision_recall_note": "Framework operating point; count diagnostics separately use confidence=0.25",
+      "incomplete_labels": true,
+      "primary_validation_groups": 1
+    },
+    "final_execution_status": {
+      "dataset_id": "a1-test",
+      "declared": 46,
+      "analyzed": 46,
+      "pending": 0,
+      "statuses": {
+        "PARTIAL": 15,
+        "SUCCESS": 30,
+        "REJECTED": 1,
+        "FAILED": 0
+      },
+      "descriptive_automatic_roi": {
+        "n": 0,
+        "MAE_mg": null,
+        "RMSE_mg": null,
+        "bias_mg": null
+      },
+      "strict_reviewed_roi": {
+        "n": 0,
+        "MAE_mg": null,
+        "RMSE_mg": null,
+        "bias_mg": null
+      },
+      "prediction_coverage": null,
+      "segmentation_accuracy": null,
+      "primary_split_groups": 2,
+      "limitation": "A1 annotations incomplete; A2 automatic-ROI errors are exploratory. Image count is not independent biological group count.",
+      "status": [
+        "RESEARCH_PROTOTYPE",
+        "NOT_FIELD_VALIDATED"
+      ]
+    },
+    "validation_images": 61,
+    "validation_primary_groups": 1
+  },
+  "status": [
+    "RESEARCH_PROTOTYPE",
+    "NOT_FIELD_VALIDATED"
+  ]
+}

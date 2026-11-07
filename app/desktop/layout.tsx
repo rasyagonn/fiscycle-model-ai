@@ -1,3 +1,4 @@
+import { AiContextNotice } from '@/components/ai/AiContextNotice';
 import React from 'react';
 import type { Metadata } from 'next';
 import DesktopSidebar from '@/components/desktop/DesktopSidebar';
@@ -19,6 +20,7 @@ export default function DesktopLayout({
 
       {/* Main Desktop Viewport (1224px min content) */}
       <main className="flex-1 min-h-screen overflow-y-auto">
+        <AiContextNotice />
         {children}
       </main>
     </div>

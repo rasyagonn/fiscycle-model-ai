@@ -1,0 +1,21 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "D:\\project\\Fyscycle\\datasets",
+  "weights_dir": "D:\\project\\Fyscycle\\fiscycle-model-ai\\weights",
+  "runs_dir": "D:\\project\\Fyscycle\\fiscycle-model-ai\\runs",
+  "uuid": "d10c793342f90be10cbeaed671e1453a9f604451af5f90eea836ca8d7c1836cb",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}

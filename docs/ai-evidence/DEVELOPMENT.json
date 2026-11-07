@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "ACTUAL_TURBOPACK_DEVELOPMENT_SERVER",
+  "checks": [
+    "Documented next dev serves /mitra/ai",
+    "Tailwind/PostCSS produces compiled utility CSS",
+    "Development proxy reports missing upstream as 503, not fake readiness"
+  ],
+  "css_bytes": 164494,
+  "test_server": "STOPPED_AFTER_TEST"
+}

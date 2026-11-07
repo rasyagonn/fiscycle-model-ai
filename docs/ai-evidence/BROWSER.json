@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "REAL_HEADLESS_CHROME_UI",
+  "checks": [
+    {
+      "check": "Desktop shell and real model readiness",
+      "status": "PASS"
+    },
+    {
+      "check": "Tailwind utilities compiled in production",
+      "status": "PASS"
+    },
+    {
+      "check": "Water replay real observations, forecasts and DSS visible",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 curated photo real inference and result",
+      "status": "PASS"
+    },
+    {
+      "check": "Real file upload reaches A1 and displays detector count",
+      "status": "PASS"
+    },
+    {
+      "check": "A2 reviewed-ROI upload renders model preview",
+      "status": "PASS"
+    },
+    {
+      "check": "B1 historical stepping and predicted weight rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "DSS explanations and factor registry rendered",
+      "status": "PASS"
+    },
+    {
+      "check": "Actual analysis history visible",
+      "status": "PASS"
+    },
+    {
+      "check": "Mitra AI responsive without horizontal overflow at 390",
+      "status": "PASS"
+    },
+    {
+      "check": "Mitra AI responsive without horizontal overflow at 768",
+      "status": "PASS"
+    },
+    {
+      "check": "Existing pond dashboard retained with truthful demo label",
+      "status": "PASS"
+    },
+    {
+      "check": "Existing six-step Golden Thread self-test passes",
+      "status": "PASS"
+    },
+    {
+      "check": "No uncaught browser or hydration errors",
+      "status": "PASS"
+    },
+    {
+      "check": "No missing browser resources",
+      "status": "PASS"
+    }
+  ],
+  "resource_errors": []
+}

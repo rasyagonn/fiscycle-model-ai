@@ -191,7 +191,7 @@ export function DemoPitchToolbar() {
     if (report.passed) {
       toast.success('✅ Seluruh 6 Assertion Golden Thread LULUS 100%!', {
         description:
-          '1. IN-0045 terbuat · 2. Admin verify +420 pts & BSF-04 +42kg · 3. DO Kolam 2 pulih & pakan BSF 20kg · 4. ORD-0241 redeem 3.000 pts · 5. Skor AI 96% ALC-0031 · 6. Mitra terima panen',
+          '1. IN-0045 terbuat · 2. Admin verify +420 pts & BSF-04 +42kg · 3. DO Kolam 2 pulih & pakan BSF 20kg · 4. ORD-0241 redeem 3.000 pts · 5. Alokasi baru unik, skor aturan 96% · 6. Mitra terima panen',
       });
     } else {
       const failed = report.steps.find((s) => !s.passed);

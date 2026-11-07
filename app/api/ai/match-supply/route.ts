@@ -3,7 +3,7 @@ import { SEED_ORDERS, SEED_PONDS, SEED_FARM } from '@/mocks/seed';
 import { rankPondsForOrder } from '@/lib/matching';
 import type { FishOrder } from '@/lib/types';
 
-const AI_URL = process.env.FISCYCLE_AI_URL || 'http://127.0.0.1:8000';
+
 
 interface MatchSupplyRequestBody {
   orderId?: string;
@@ -62,34 +62,14 @@ export async function POST(req: NextRequest) {
       SEED_ORDERS[0];
   }
 
-  // 1. Try forwarding to external AI backend
-  try {
-    const upstreamRes = await fetch(`${AI_URL}/api/v1/match-supply`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ order: targetOrder }),
-      signal: AbortSignal.timeout(1500),
-    });
-
-    if (upstreamRes.ok) {
-      const data = await upstreamRes.json();
-      return NextResponse.json({
-        ok: true,
-        mode: 'LIVE_FASTAPI',
-        orderId: targetOrder.id,
-        ...data,
-      });
-    }
-  } catch {
-    // Upstream not reached -> continue to deterministic fallback
-  }
-
-  // 2. Deterministic AI Matching Fallback
+  // Business ranking over demo seed data; this is not a trained model.
   const rankedSuggestions = rankPondsForOrder(targetOrder, SEED_PONDS, SEED_FARM);
 
   return NextResponse.json({
     ok: true,
-    mode: 'DETERMINISTIC_FALLBACK',
+    mode: 'BUSINESS_RULE_DEMO',
+    provenance: 'SIMULATED_APPLICATION_SEED',
+    model_inference: false,
     orderId: targetOrder.id,
     order: {
       id: targetOrder.id,

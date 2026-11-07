@@ -148,9 +148,10 @@ export function runGoldenThreadVerification(): GoldenThreadVerificationReport {
   });
 
   // --------------------------------------------------------------------------
-  // Step 5: Admin Alokasi Kolam 4 (Skor AI 96% -> ALC-0031)
+  // Step 5: Admin Alokasi Kolam 4 (skor aturan 96%, ID baru tidak menimpa seed)
   // --------------------------------------------------------------------------
   const adminStore = useAdminStore.getState();
+  const previousOfferIds = new Set(useMitraStore.getState().allocationOffers.map(o => o.id));
   const offers = adminStore.approveSupplyAllocation(order.id, [
     {
       farmId: 'FARM-0028',
@@ -162,16 +163,18 @@ export function runGoldenThreadVerification(): GoldenThreadVerificationReport {
   const alcOffer = offers.find((o) => o.orderId === order.id);
   const updatedOrder = useB2BCartStore.getState().orders.find((o) => o.id === order.id);
 
-  const step5OfferOk = alcOffer !== undefined && alcOffer.id === 'ALC-0031' && alcOffer.aiMatchScorePct === 96 && alcOffer.estimatedPayoutIdr === 16000000;
-  const step5OrderOk = updatedOrder?.status === 'Dialokasikan';
+  const step5OfferOk = alcOffer !== undefined && !previousOfferIds.has(alcOffer.id) && /^ALC-\d{4}$/.test(alcOffer.id) && alcOffer.pondId === 'POND-04' && alcOffer.allocatedKg === 500 && alcOffer.aiMatchScorePct === 96 && alcOffer.estimatedPayoutIdr === 16000000;
+  const step5OrderOk = updatedOrder?.status === 'Dialokasikan' &&
+    useMitraStore.getState().allocationOffers.length === previousOfferIds.size + 1 &&
+    [...previousOfferIds].every(id => useMitraStore.getState().allocationOffers.some(o => o.id === id));
   const step5Passed = step5OfferOk && step5OrderOk;
 
   results.push({
     step: 5,
-    name: 'Admin Alokasi Pasokan ke Kolam 4 (Skor AI 96%)',
+    name: 'Admin Alokasi Pasokan ke Kolam 4 (Skor Kecocokan 96%)',
     passed: step5Passed,
     detail: step5Passed
-      ? `ALC-0031 diterbitkan, skor AI 96%, estimasi payout Rp 16.000.000, status order='Dialokasikan'.`
+      ? `${alcOffer?.id} diterbitkan tanpa menimpa alokasi lama, skor kecocokan 96%, estimasi payout Rp 16.000.000, status order='Dialokasikan'.`
       : `GAGAL: ALC=${alcOffer?.id}, skor=${alcOffer?.aiMatchScorePct}, payout=${alcOffer?.estimatedPayoutIdr}, orderStatus=${updatedOrder?.status}`,
   });
 
@@ -182,7 +185,7 @@ export function runGoldenThreadVerification(): GoldenThreadVerificationReport {
     useMitraStore.getState().respondToAllocation(alcOffer.id, true);
   }
 
-  const finalOffer = useMitraStore.getState().allocationOffers.find((o) => o.id === (alcOffer?.id ?? 'ALC-0031'));
+  const finalOffer = useMitraStore.getState().allocationOffers.find((o) => o.id === alcOffer?.id && o.orderId === order.id);
   const finalOrder = useB2BCartStore.getState().orders.find((o) => o.id === order.id);
 
   const step6OfferOk = finalOffer?.status === 'Diterima';
@@ -194,7 +197,7 @@ export function runGoldenThreadVerification(): GoldenThreadVerificationReport {
     name: 'Mitra Terima Kontrak Panen (Alokasi Sukses)',
     passed: step6Passed,
     detail: step6Passed
-      ? `Kontrak ALC-0031 status='Diterima', ORD-0241 beralih ke status='Menunggu Panen'.`
+      ? `Kontrak ${alcOffer?.id} status='Diterima', ORD-0241 beralih ke status='Menunggu Panen'.`
       : `GAGAL: Offer status=${finalOffer?.status}, Order status=${finalOrder?.status}`,
   });
 

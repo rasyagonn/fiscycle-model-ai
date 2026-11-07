@@ -1,3 +1,24 @@
+# Fiscycle ? aplikasi utama + AI Service
+
+Modul AI tersedia di **/mitra/ai** dan **/desktop/ai** melalui menu Pusat AI.
+Water, A1, A2 v3, B1, DSS, kedua historical replay dan galeri 16 foto memakai model asli.
+Panduan menjalankan dua service, environment, kontrak dan batas integrasi:
+[docs/AI_INTEGRATION.md](docs/AI_INTEGRATION.md).
+
+```powershell
+pnpm.cmd install --frozen-lockfile
+# Siapkan Python dan environment AI sesuai panduan, lalu dua terminal:
+pnpm.cmd ai:dev
+pnpm.cmd dev
+```
+
+Tes: `pnpm.cmd typecheck`, `pnpm.cmd lint`, `pnpm.cmd build`, `pnpm.cmd test:ai`.
+Data operasional lama adalah simulasi; halaman Pusat AI menandai provenance model/replay.
+Token layanan hanya berada di server. Proxy produksi tertutup secara default sampai
+pengelola mengaktifkannya pada lingkungan internal atau memasang otorisasi backend.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

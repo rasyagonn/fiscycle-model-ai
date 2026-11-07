@@ -1,0 +1,94 @@
+{
+  "model_version": "model_a2_training_v3",
+  "architecture": "MobileNetV3 Small; classifier 576→128→1; Hardswish; dropout 0.2",
+  "input": "compatible source photo, native-pixel ROI of whole visible larva; no aspect distortion",
+  "preprocessing": {
+    "method": "fixed_native_pixel_canvas_v1",
+    "canvas_size": 2048,
+    "cnn_size": 224,
+    "padding_rgb": [
+      127,
+      127,
+      127
+    ],
+    "selection": "Smallest power of two >= maximum old ROI side among456 TRAIN IDs only",
+    "train_max_roi_side": 1556,
+    "target_used_for_canvas": false,
+    "validation_used_for_canvas": false,
+    "source_to_cnn_scale": 0.109375,
+    "geometry_policy": "Retain whole old ROI at native pixel size; centre it on constant source-pixel canvas; pad outside old ROI to avoid exposing new ID/ruler pixels; one bilinear resize",
+    "limitation": "No new context outside old clean ROI; residual defects inside that ROI may remain. Pixel scale is not calibrated physical size."
+  },
+  "image_normalization": {
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "target_normalization": "Frozen target_mean_mg and target_std_mg are in best.pt config; inverse transformation is required",
+  "target": "predicted_measured_weight_mg",
+  "weight_protocol": "WET_DRY_UNCONFIRMED",
+  "pixel_to_mm": null,
+  "evaluation": {
+    "validation": {
+      "v2": {
+        "n": 152,
+        "MAE_mg": 37.85615951136539,
+        "RMSE_mg": 50.027456848255916,
+        "bias_mg": -18.302154440628854,
+        "R2": 0.11284714004582375
+      },
+      "v3": {
+        "n": 152,
+        "MAE_mg": 17.28840456510845,
+        "RMSE_mg": 22.555757020248915,
+        "bias_mg": -3.4230776335063733,
+        "R2": 0.8196581917401724
+      }
+    },
+    "validation_primary_groups": 2,
+    "controlled_comparison_exception": "V3 excludes train A2_0972 after actual preview showed ruler ticks touching body. V2 trained456; v3 trains455. Same152 validation IDs and all hyperparameters, including original456-train target normalization. No v2 retraining; result cannot isolate preprocessing alone.",
+    "final_automatic_roi": {
+      "dataset_id": "a2-test",
+      "declared": 178,
+      "analyzed": 178,
+      "pending": 0,
+      "statuses": {
+        "PARTIAL": 0,
+        "SUCCESS": 130,
+        "REJECTED": 48,
+        "FAILED": 0
+      },
+      "descriptive_automatic_roi": {
+        "n": 130,
+        "MAE_mg": 19.140898021166347,
+        "RMSE_mg": 23.5556343130764,
+        "bias_mg": 3.0577493776289573
+      },
+      "strict_reviewed_roi": {
+        "n": 0,
+        "MAE_mg": null,
+        "RMSE_mg": null,
+        "bias_mg": null
+      },
+      "prediction_coverage": 0.7303370786516854,
+      "segmentation_accuracy": null,
+      "primary_split_groups": 1,
+      "limitation": "A1 annotations incomplete; A2 automatic-ROI errors are exploratory. Image count is not independent biological group count.",
+      "status": [
+        "RESEARCH_PROTOTYPE",
+        "NOT_FIELD_VALIDATED"
+      ]
+    }
+  },
+  "status": [
+    "RESEARCH_PROTOTYPE",
+    "NOT_FIELD_VALIDATED"
+  ]
+}

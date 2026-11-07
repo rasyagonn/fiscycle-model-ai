@@ -1,0 +1,8 @@
+{
+  "hasil/model_a2_training_v3/best.pt": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b",
+  "hasil/model_a2_training_v3/COMPLETE.json": "0131c9e6a0caf8c65ba81043e41a3efa7a4a32fcee21b76ad6b37b97559ace09",
+  "hasil/model_a2_training_v3/preprocessing_config.json": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e",
+  "README.md": "8676ee716a7073b477bce1f2c38bca30c08a605e7e97cb60a92e062ec9055ea9",
+  "requirements-runtime.txt": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e",
+  "runtime_contract.json": "7a107a65bd0d910eef255705576b7b93ab4dfea8cf34cf28cda82ee9ce31761b"
+}

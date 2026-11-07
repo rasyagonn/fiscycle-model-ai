@@ -1,0 +1,1030 @@
+{
+  "created_at_wib": "2026-11-07T19:48:44.284203+07:00",
+  "repository": "D:\\project\\Fyscycle\\fiscycle",
+  "committed": false,
+  "pushed": false,
+  "private_seed_location": "D:\\project\\Fyscycle\\FISCYCLE_PRIVATE_REPLAY",
+  "files": [
+    {
+      "path": ".env.example",
+      "change": "created",
+      "bytes": 585,
+      "sha256": "af62a1ca022097fb623be5f3bee91d2e013efb0ac88bada0c40c1b8e0f86b939"
+    },
+    {
+      "path": ".gitignore",
+      "change": "modified",
+      "bytes": 872,
+      "sha256": "ccdec1b81989983d985214893faebdf5951ecbd6d79decce35acb1c05cd5d17b"
+    },
+    {
+      "path": "README.md",
+      "change": "modified",
+      "bytes": 2286,
+      "sha256": "0b7403a8115cfc0150400015f43fffe19b5e6c23066fc7a6f3fc4ab1f4215dbc"
+    },
+    {
+      "path": "ai-service/.dockerignore",
+      "change": "created",
+      "bytes": 263,
+      "sha256": "3c07e11bc55d8266d5024afc097b574458e51f4b80fea00a332c03b42a61f473"
+    },
+    {
+      "path": "ai-service/.env.example",
+      "change": "created",
+      "bytes": 406,
+      "sha256": "8c472690ce450e8ab76670818f3412406b9f484742c2ec9d6f7b92086991f663"
+    },
+    {
+      "path": "ai-service/.gitattributes",
+      "change": "created",
+      "bytes": 84,
+      "sha256": "1dc4c44a67c551afee6ae64186e6f637bc7fd49046f705bb8bdf724c8e805ffe"
+    },
+    {
+      "path": "ai-service/.gitignore",
+      "change": "created",
+      "bytes": 218,
+      "sha256": "23579b2a880ab8b5fc409e5c2b1cd6c882696998efd681f6d6b69195c7036c43"
+    },
+    {
+      "path": "ai-service/Dockerfile",
+      "change": "created",
+      "bytes": 1400,
+      "sha256": "247002a59e663d2f40959f51bcf8b0a812f783645e5f918ddc0efb55112d3576"
+    },
+    {
+      "path": "ai-service/JALANKAN_WINDOWS.cmd",
+      "change": "created",
+      "bytes": 659,
+      "sha256": "3026916230ff93f2ff1fdcd98f98c9780109893b443f0c43112a81e93cd153e7"
+    },
+    {
+      "path": "ai-service/README.md",
+      "change": "created",
+      "bytes": 5125,
+      "sha256": "e0184085d3be234f5460c84cdb88c9f206aa83fc572d801e7a6159b9bb2791a9"
+    },
+    {
+      "path": "ai-service/Ultralytics/persistent_cache.json",
+      "change": "created",
+      "bytes": 61,
+      "sha256": "64e76b2f573b3f7c7c49ada00665e44ee32518d16c8253a9caa275a14900e637"
+    },
+    {
+      "path": "ai-service/Ultralytics/settings.json",
+      "change": "created",
+      "bytes": 585,
+      "sha256": "501f084757983231712aa4ca2f2a0d8a89aaea29c19f2e991f9aad8a61c38bf4"
+    },
+    {
+      "path": "ai-service/app/__init__.py",
+      "change": "created",
+      "bytes": 44,
+      "sha256": "a999fcfc9d651469d4c1325429033ed0ae737c9c8e9a77c99f16bd6f88f51d8b"
+    },
+    {
+      "path": "ai-service/app/core/__init__.py",
+      "change": "created",
+      "bytes": 50,
+      "sha256": "a2439802beeafdf858f3cbf5cdadb4e44ef7f68816ba2a0d78bc8cb0b11fb8ee"
+    },
+    {
+      "path": "ai-service/app/core/artifacts.py",
+      "change": "created",
+      "bytes": 1410,
+      "sha256": "2b0cbcf9ada3507588632cb696dfa059f3682274eecdbbf14dec5cbec7e834d4"
+    },
+    {
+      "path": "ai-service/app/core/config.py",
+      "change": "created",
+      "bytes": 2017,
+      "sha256": "faf46597a1aa1cb914fd43da6fb5739abfddfe887884b4ed52f7af6b19fb7c57"
+    },
+    {
+      "path": "ai-service/app/core/http.py",
+      "change": "created",
+      "bytes": 866,
+      "sha256": "2f9b218a5ca25a10d665ae01fb60e567bef1e668c55550320fa39ca3b3752bc0"
+    },
+    {
+      "path": "ai-service/app/core/model_registry.py",
+      "change": "created",
+      "bytes": 5852,
+      "sha256": "d8d979263df68d59c058e51b59f9142be89e1fe9b2b7c67c21d90dbb70993074"
+    },
+    {
+      "path": "ai-service/app/core/security.py",
+      "change": "created",
+      "bytes": 3831,
+      "sha256": "5cf07e7f93c3da20cbbc53f6f3de6901a5d5208086de8fb20eb3d82bc8a6afca"
+    },
+    {
+      "path": "ai-service/app/core/uploads.py",
+      "change": "created",
+      "bytes": 1080,
+      "sha256": "b5855ced3d7321a271e5114e24b51c191660acf2bea8b5e216bf67f52d4fe442"
+    },
+    {
+      "path": "ai-service/app/main.py",
+      "change": "created",
+      "bytes": 9324,
+      "sha256": "a5a8c302810e553f637c80834104506685be989e235a6b16d923a0ac1965733f"
+    },
+    {
+      "path": "ai-service/app/model_loader/__init__.py",
+      "change": "created",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ai-service/app/routers/__init__.py",
+      "change": "created",
+      "bytes": 51,
+      "sha256": "71ba770fc4c4f7e342dcc7fcc352ad9bb628dac17f74922fcfb0d053cd2f29db"
+    },
+    {
+      "path": "ai-service/app/routers/bsf_intelligence.py",
+      "change": "created",
+      "bytes": 13473,
+      "sha256": "a3cd45ff809a0d8fcc64ca0b2fb33151f11a043d62b7570690d0fe409bd7aa25"
+    },
+    {
+      "path": "ai-service/app/routers/demo_gallery.py",
+      "change": "created",
+      "bytes": 1506,
+      "sha256": "32b1b54dec31ce89cb51c164beec44a9bfda76f48f4419e1967879dae3f176d0"
+    },
+    {
+      "path": "ai-service/app/routers/integration.py",
+      "change": "created",
+      "bytes": 6287,
+      "sha256": "cd65fc7732426d21c19907861ce9ed6294897dea5663a9ec88e11ea0705fd2c6"
+    },
+    {
+      "path": "ai-service/app/routers/water_quality.py",
+      "change": "created",
+      "bytes": 5641,
+      "sha256": "882633f757dee33b939215b673873628c1ec369aa289e76e0bb1b34dcaf4641f"
+    },
+    {
+      "path": "ai-service/app/runtime_artifacts.json",
+      "change": "created",
+      "bytes": 1849,
+      "sha256": "22eca1e0681ff08883d36068093e21f57030cc4c73655237f8fbd1c4529cef0c"
+    },
+    {
+      "path": "ai-service/app/schemas/__init__.py",
+      "change": "created",
+      "bytes": 39,
+      "sha256": "ad8d5d9f996bf8b45e3850883ffc204046548c1dca05d21c64d54d7fbf0460cb"
+    },
+    {
+      "path": "ai-service/app/schemas/bsf.py",
+      "change": "created",
+      "bytes": 683,
+      "sha256": "b4bd6ea956391528012d36d71f2a29411b63a3c8484bf2af7b3f785383d9cd8d"
+    },
+    {
+      "path": "ai-service/app/schemas/water_quality.py",
+      "change": "created",
+      "bytes": 3797,
+      "sha256": "2658fd18c10e27f40c3c8983e690bb2c0d4695286e6d146f3e49e9d93c980919"
+    },
+    {
+      "path": "ai-service/app/services/__init__.py",
+      "change": "created",
+      "bytes": 60,
+      "sha256": "c610ff147a96ddb523b1e09061a3f99c5238aff8e6efe437e2afec7d340a8e9b"
+    },
+    {
+      "path": "ai-service/app/services/bsf.py",
+      "change": "created",
+      "bytes": 779,
+      "sha256": "1f2a148b55fc0b97fc3f2c8a63e5368bf67ffbf34b8328cbef358592387b492e"
+    },
+    {
+      "path": "ai-service/app/services/bsf_b1_inference.py",
+      "change": "created",
+      "bytes": 7335,
+      "sha256": "87fd6c8dfaaafae329c28df55ae93b4e20585d175b9a33e6361b08502e357486"
+    },
+    {
+      "path": "ai-service/app/services/bsf_decisions.py",
+      "change": "created",
+      "bytes": 15782,
+      "sha256": "df9dac7238ed9b307c0e548f2a7a09d5b47a50f33b6ac7fa5ca37e8a76002157"
+    },
+    {
+      "path": "ai-service/app/services/bsf_gallery_roi.py",
+      "change": "created",
+      "bytes": 4875,
+      "sha256": "aae1c589a34b8fe4464919749e444bece7855208179e81641b5453e673dfb280"
+    },
+    {
+      "path": "ai-service/app/services/bsf_intelligence.py",
+      "change": "created",
+      "bytes": 15426,
+      "sha256": "d41da240961b96ea82639e3670a1c8893a955e07b11973083fca88b3b82be648"
+    },
+    {
+      "path": "ai-service/app/services/bsf_models.py",
+      "change": "created",
+      "bytes": 9781,
+      "sha256": "ccb13c32cf4e05eedb1d24534de9bc043f7891f7c601e25807148d1a8fd6ff73"
+    },
+    {
+      "path": "ai-service/app/services/bsf_photo.py",
+      "change": "created",
+      "bytes": 7407,
+      "sha256": "b9f2385b79e6c282fe10371bfccf615503ab42bd3fe90828ebbf6dfb6c585177"
+    },
+    {
+      "path": "ai-service/app/services/demo_gallery.py",
+      "change": "created",
+      "bytes": 4029,
+      "sha256": "b5a50b9087f79649a09ac73acb3f95406d4709e75e25b7db0620d53753541a3d"
+    },
+    {
+      "path": "ai-service/app/services/gallery_inference.py",
+      "change": "created",
+      "bytes": 4824,
+      "sha256": "c293683e3421863f3960eafb8164cb5efd390a36fac71a37ee36a0284a238475"
+    },
+    {
+      "path": "ai-service/app/services/water_core.py",
+      "change": "created",
+      "bytes": 22450,
+      "sha256": "80b46bcf901186728431963764d76b613b11cf6cea998e5eb36f3cd45641de2c"
+    },
+    {
+      "path": "ai-service/app/services/water_insights.py",
+      "change": "created",
+      "bytes": 5027,
+      "sha256": "4b070030639d6bcb9b7015d5ccafacf88eb590ec008643f4b169bac27e1a770a"
+    },
+    {
+      "path": "ai-service/app/services/water_quality.py",
+      "change": "created",
+      "bytes": 11222,
+      "sha256": "e3f9330a29a8c529d546f773adf2c769a8ab6353c443a8a296242137bd0dfcaf"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/ATTRIBUTION.txt",
+      "change": "created",
+      "bytes": 374,
+      "sha256": "ddb971f0f4d21d218c6f8e4be70ccbd8cb45a58670cb9f91ecfe0598fdcef43b"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/BUKA_GALERI_TERPILIH.html",
+      "change": "created",
+      "bytes": 5395,
+      "sha256": "c69fb6fa812a394fe52a76900155092384aff3b32e42df679d096a5eb10178b1"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/README.md",
+      "change": "created",
+      "bytes": 902,
+      "sha256": "51e657b9e22b039e07c3798e2fbba64b94f981ebdc5e60c1d90ec6ee3de923a7"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/VERIFICATION.json",
+      "change": "created",
+      "bytes": 917,
+      "sha256": "916d35cd10aa639b82f6009248c92a29c2751127823b9c11774c5b36d7ece63f"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/competition_gallery_selection.json",
+      "change": "created",
+      "bytes": 27811,
+      "sha256": "57c3d4ececcd2abfb7b45bb5c6a9fc251b3859fd386e092cb9653778599da835"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/032e689866a76216e200d5f5.jpg",
+      "change": "created",
+      "bytes": 54598,
+      "sha256": "b9469efe278ef6c3c7d772224bcd4019f84313077ac7aa292cca3b1ec82ad32c"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/046ba0a89764e43ae347faf9.jpg",
+      "change": "created",
+      "bytes": 63881,
+      "sha256": "e092cc6a340aa14947d9fe93c90401f8c86af43910f57da21ff5d2ccbf9554cb"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/0835fd5628441ce31e1e05f9.jpg",
+      "change": "created",
+      "bytes": 67639,
+      "sha256": "1fe19137f9e84add71d8cdfee08dbbda586c24b29a384e48f2c62813d61d569b"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/08c0899db7910c16b47b2b77.jpg",
+      "change": "created",
+      "bytes": 4146436,
+      "sha256": "3b5850330349b3a4918469f6e06ec1fd37eb0f34aadaa5ec494bcdea9634b5fa"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/3225b837516130ba33b22b90.jpg",
+      "change": "created",
+      "bytes": 4061943,
+      "sha256": "27f6afb33bee98b92a4d8707503d8d06f5450f6932943e71202875fe81c0fa06"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/69e878d6c98765d9be1a310f.jpg",
+      "change": "created",
+      "bytes": 4273236,
+      "sha256": "e5aaeefb73dc218340cab6ac224e03cf748077e42b283042488b69410c0454b5"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/746693368e6d953ef7962748.jpg",
+      "change": "created",
+      "bytes": 23270,
+      "sha256": "484305379ed1b5b5562f5bc6b779e5139522916a0853300c77605f9ae417c885"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/7dd74529fb95189502fd649e.jpg",
+      "change": "created",
+      "bytes": 65588,
+      "sha256": "0872721aaca9eb619b5796ac23a22ac225db9fbbf30aac4bd039dae71f56a7f6"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/88896a9286b791851f6b8e6d.jpg",
+      "change": "created",
+      "bytes": 72344,
+      "sha256": "ba51e87ceb0844f9d0cc40a00b960a0039e87d2c1fea78b55db459353607eefe"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/8b4eca00fbdc667d12e0588d.jpg",
+      "change": "created",
+      "bytes": 4292975,
+      "sha256": "840312378478527b9e8c97815d702aab77862da0b18d24f3a5698dbd90dc563c"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/9cd28335eda01daf911acc2a.jpg",
+      "change": "created",
+      "bytes": 4075867,
+      "sha256": "c3e97bb47968907283d4ec4f95f7c0a73c1b063138f959cf8d4188b6300763d9"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/babe3bf458ab9198338e4cf1.jpg",
+      "change": "created",
+      "bytes": 65598,
+      "sha256": "b0bdd92734db1a6508c186ebf0b0303dee023e46ae27f75cbc4981473dff3162"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/c78ee3e1bcaa07b4077fdf1e.jpg",
+      "change": "created",
+      "bytes": 4294885,
+      "sha256": "484508f52f53350810ed881233853998db26c1356e0cbcc16fe09f9765229dda"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/d863abb35c3aab5b5c93653f.jpg",
+      "change": "created",
+      "bytes": 4129744,
+      "sha256": "8a6583b27204b752893396889cb9011c6291fddc7790bef72296544c075cdfbf"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/e83af626100b87fba5a57b02.jpg",
+      "change": "created",
+      "bytes": 67547,
+      "sha256": "d24e82ac960052c27df589d820f81e03dae446c94b8cbe11f2524410c5206957"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/images/eb8e57036080da4228737125.jpg",
+      "change": "created",
+      "bytes": 4214385,
+      "sha256": "6405e6975cc63013c9323cb600a13eabf264b228f8f3314a6d284766eebbac87"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/032e689866a76216e200d5f5.jpg",
+      "change": "created",
+      "bytes": 12940,
+      "sha256": "4c3f832d6b4470d99a945ca92fa879622db0dcd1170f0ea4b20e6749a602d868"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/046ba0a89764e43ae347faf9.jpg",
+      "change": "created",
+      "bytes": 15034,
+      "sha256": "19d17be6e388dc3b31b56bbf76749173c1d25b4e8b3e3d62b01c68865499b8bf"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/0835fd5628441ce31e1e05f9.jpg",
+      "change": "created",
+      "bytes": 15166,
+      "sha256": "00ece15d0e3d1cea13ef645767bb7b3250dd437e172b4d436aa1374943df0943"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/08c0899db7910c16b47b2b77.jpg",
+      "change": "created",
+      "bytes": 5392,
+      "sha256": "cf00a8abc7dcc021f8fc34f8f08a1c8c7a6986ab742836e04beb996e9168128f"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/3225b837516130ba33b22b90.jpg",
+      "change": "created",
+      "bytes": 5283,
+      "sha256": "78a46538dc33ab690a76cfde9b339b0897ba8a62993d78dbd1092d126bec6096"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/69e878d6c98765d9be1a310f.jpg",
+      "change": "created",
+      "bytes": 6105,
+      "sha256": "34a6078d2b3ae3849dcfedeff0db9874f81b09e35780a881cf4b91fa8ac027ec"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/746693368e6d953ef7962748.jpg",
+      "change": "created",
+      "bytes": 4958,
+      "sha256": "33192877a2f2304b65508f4e54e739c00107b3f2cfd36d8afb374d8d85b8a741"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/7dd74529fb95189502fd649e.jpg",
+      "change": "created",
+      "bytes": 15241,
+      "sha256": "e8f450e4f19aedfab1a4d2f0a22fff9049fc32ad40e15db66edca5a59da1d301"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/88896a9286b791851f6b8e6d.jpg",
+      "change": "created",
+      "bytes": 17056,
+      "sha256": "c1e37452ee8d2d98f357f570357d70368b274c5d5c5f91da4fcd120729ec4244"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/8b4eca00fbdc667d12e0588d.jpg",
+      "change": "created",
+      "bytes": 5750,
+      "sha256": "318e4cefa0e8730e289bc4441a282514c1a252b6cd7b2d5796d90ff5764612fb"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/9cd28335eda01daf911acc2a.jpg",
+      "change": "created",
+      "bytes": 5770,
+      "sha256": "37c5ec97519a1f6f5856de0dc9e548c06c6241f45d61f2d4641f7247d3f16d77"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/babe3bf458ab9198338e4cf1.jpg",
+      "change": "created",
+      "bytes": 15240,
+      "sha256": "e685f1a8e622299d603c09455510dcf45142106e6622d49f6e467cbda2d5e031"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/c78ee3e1bcaa07b4077fdf1e.jpg",
+      "change": "created",
+      "bytes": 6197,
+      "sha256": "40e87b1a3a9c1079e531eaf6644619e3e5e497d37c9939842388b42e5784cc48"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/d863abb35c3aab5b5c93653f.jpg",
+      "change": "created",
+      "bytes": 5266,
+      "sha256": "89e6f5da589e6c7552d18ffbdb11412a7110dde1a9f7eb69fee8e151166e8c95"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/e83af626100b87fba5a57b02.jpg",
+      "change": "created",
+      "bytes": 14808,
+      "sha256": "46b21ff46c0bfef332090c1724c72d201bdd881cb0da2a7730d570e67c537015"
+    },
+    {
+      "path": "ai-service/assets/demo_gallery/thumbnails/eb8e57036080da4228737125.jpg",
+      "change": "created",
+      "bytes": 6103,
+      "sha256": "433e302596d9f2cdeff9e54dd6faa996b5f1dfeb484a098331d2d17280e2355b"
+    },
+    {
+      "path": "ai-service/docs/API_ENDPOINTS.md",
+      "change": "created",
+      "bytes": 2364,
+      "sha256": "7813235b24107bf3988d81b09c83c1a48c98d1b392a32f177d8e09e2e286ca6f"
+    },
+    {
+      "path": "ai-service/docs/CURATED_INFERENCE.json",
+      "change": "created",
+      "bytes": 3055,
+      "sha256": "731d99429838cf012ba5e819010b208ecd56eb88c6c754d8db0c3d9a0c16c9bf"
+    },
+    {
+      "path": "ai-service/docs/KNOWN_LIMITATIONS.md",
+      "change": "created",
+      "bytes": 2479,
+      "sha256": "00d0e02e6c3f9b5564b402124927d2aa3349c917552287fcb558f31b19bdce3f"
+    },
+    {
+      "path": "ai-service/docs/LOCAL_HTTP_SMOKE.json",
+      "change": "created",
+      "bytes": 1967,
+      "sha256": "70c11ca3c18ffe97e5b4579e1a93e92c4513772b906c148a52167ead488cb92e"
+    },
+    {
+      "path": "ai-service/docs/LOCAL_TEST_RESULTS.xml",
+      "change": "created",
+      "bytes": 2194,
+      "sha256": "4b0957227ec1fab6883d9969978788400d6ae41f55e7a3832c2a0aa5a705c1db"
+    },
+    {
+      "path": "ai-service/docs/LOCAL_VERIFICATION.json",
+      "change": "created",
+      "bytes": 3304,
+      "sha256": "076a161ae00b0df00f9f0fd6567089311463d6c30646f55751252da17a56936b"
+    },
+    {
+      "path": "ai-service/docs/OPENAPI.json",
+      "change": "created",
+      "bytes": 73350,
+      "sha256": "f8c5c92d0cd3bcdffbafd7d569437c777d333b4ac121eed38d211a7761f5d10b"
+    },
+    {
+      "path": "ai-service/examples/node_client.mjs",
+      "change": "created",
+      "bytes": 1392,
+      "sha256": "ea5984f74a0013d62ecee89ea742ab2e2f4a5c5277b8d230057f2fcc4306701f"
+    },
+    {
+      "path": "ai-service/examples/python_client.py",
+      "change": "created",
+      "bytes": 1015,
+      "sha256": "9b0096d2dec64ee68d0ca65735364feb681fbaa21fba9beaf3eb25d638c48d35"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a1/README.md",
+      "change": "created",
+      "bytes": 2495,
+      "sha256": "c02ac4ba93043a1cac4daed119704ee354dcfb1868be1f491e10aa92c5cee779"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a1/checksums.json",
+      "change": "created",
+      "bytes": 411,
+      "sha256": "662827111fc4bf18b701018e6c4dbea2eca5669e4d4dcb8281b68af13d143da6"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a1/hasil/model_a_training_v1/a1_initial/weights/best.pt",
+      "change": "created",
+      "bytes": 5960868,
+      "sha256": "b3fe49e24ca70bbd82505ba70b333f6a9fc9a21e83ca6672d81a12ec88658534"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a1/requirements-runtime.txt",
+      "change": "created",
+      "bytes": 1316,
+      "sha256": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a1/runtime_contract.json",
+      "change": "created",
+      "bytes": 2412,
+      "sha256": "8ff226193d7a8034080d7d49bed5e6554a2d5d0695ab53f83ffb6c7ce0d5c909"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/README.md",
+      "change": "created",
+      "bytes": 3143,
+      "sha256": "8676ee716a7073b477bce1f2c38bca30c08a605e7e97cb60a92e062ec9055ea9"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/checksums.json",
+      "change": "created",
+      "bytes": 635,
+      "sha256": "d4482c761b86e68576042b456e8bec41db18dc1db0d7c37172e2a5f525624394"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/hasil/model_a2_training_v3/COMPLETE.json",
+      "change": "created",
+      "bytes": 1462,
+      "sha256": "0131c9e6a0caf8c65ba81043e41a3efa7a4a32fcee21b76ad6b37b97559ace09"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/hasil/model_a2_training_v3/best.pt",
+      "change": "created",
+      "bytes": 9924523,
+      "sha256": "2813ae2e45deaa5eea689e131fba639a20f122ef6474156530ea7cf24f33952b"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/hasil/model_a2_training_v3/preprocessing_config.json",
+      "change": "created",
+      "bytes": 719,
+      "sha256": "b81170ba47b6babe78a39f52b0cdc9abb5f8f8a0b4ec04070b55b3f9d335ac9e"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/requirements-runtime.txt",
+      "change": "created",
+      "bytes": 1316,
+      "sha256": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_a2/runtime_contract.json",
+      "change": "created",
+      "bytes": 3226,
+      "sha256": "7a107a65bd0d910eef255705576b7b93ab4dfea8cf34cf28cda82ee9ce31761b"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/README.md",
+      "change": "created",
+      "bytes": 3110,
+      "sha256": "2e67613381c392f60907f27765e4404dfaf3c86f47a3060879fda72add54e3bd"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/checksums.json",
+      "change": "created",
+      "bytes": 721,
+      "sha256": "55792f48ac7c773b3e64e01fdbab5a81527db98900052e66a08ef69b68ce1a4a"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/models/bsf_b1_inference.py",
+      "change": "created",
+      "bytes": 7335,
+      "sha256": "87fd6c8dfaaafae329c28df55ae93b4e20585d175b9a33e6361b08502e357486"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/models/bsf_model_b1_estimator.joblib",
+      "change": "created",
+      "bytes": 290345,
+      "sha256": "21c6d09b0ab9b8bcb762781262acb439f0dd61b6c28537c43995bf3ca7733af0"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/models/bsf_model_b1_model_metadata.json",
+      "change": "created",
+      "bytes": 1635,
+      "sha256": "35e6329ced516c30c6ecd86dde9b188a7056667292088215a15697e2c00594c6"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/models/bsf_model_b1_uncertainty.json",
+      "change": "created",
+      "bytes": 1341,
+      "sha256": "ecb385cfea9c13cd67cb289aa249fd8658f79a2162c21b88186e26e7abcd1b31"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/requirements-runtime.txt",
+      "change": "created",
+      "bytes": 1316,
+      "sha256": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e"
+    },
+    {
+      "path": "ai-service/model_artifacts/bsf_b1/runtime_contract.json",
+      "change": "created",
+      "bytes": 5929,
+      "sha256": "2b31eee75f5cef2d0dfd97a6f9025ea047f8733a13ac6bd107cc55a56d763400"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/README.md",
+      "change": "created",
+      "bytes": 3937,
+      "sha256": "05ef81f968d3a3abe82d0893dce07df1b101a268ea24a250ed801012d02aa4de"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/checksums.json",
+      "change": "created",
+      "bytes": 1167,
+      "sha256": "8efd29402d9cffe6a820e43280faffb0a67b989ee8fa93c8013a9c7345792586"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/manifest.json",
+      "change": "created",
+      "bytes": 44962,
+      "sha256": "4a3d2eee1b7b7ac8c0df1d37d494a3a3f9f29cb056e30852a1884e34a11f67de"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/ph_120m_v2.joblib",
+      "change": "created",
+      "bytes": 241598,
+      "sha256": "9db72b34a76bedb54ba33652617a38ad194235ff43235710a77930c397e2cbcf"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/ph_30m_v2.joblib",
+      "change": "created",
+      "bytes": 174278,
+      "sha256": "17570b1e67726e9f3b36c8147959621d6188e57f12bebb172348de566d4cdff7"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/ph_60m_v2.joblib",
+      "change": "created",
+      "bytes": 106848,
+      "sha256": "8a13a40a4e9b7718ada40bc1d1c35b97bebb0cce507b3902926955a030761f7f"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/temperature_c_120m_v2.joblib",
+      "change": "created",
+      "bytes": 329478,
+      "sha256": "89fb90f8f640043a7287d52756316671de996c6abeedc763cf9a39f14e962c1b"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/temperature_c_60m_v2.joblib",
+      "change": "created",
+      "bytes": 176537,
+      "sha256": "a8efdc19f6f53c7ce87c2f58e7f41a83fda58b17151b2432d3da06787834faf2"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/turbidity_ntu_30m_v2.joblib",
+      "change": "created",
+      "bytes": 243306,
+      "sha256": "c81866f2a988af580a86f560e9e04064265e86f59ee68f096eb0df4cb98d88ed"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/models/mvp_v2/turbidity_ntu_60m_v2.joblib",
+      "change": "created",
+      "bytes": 175581,
+      "sha256": "3e8ad92e5e1911bb7d556d9c995a337b2a6d72d4ee14e1da9446623c76ddb886"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/requirements-runtime.txt",
+      "change": "created",
+      "bytes": 1316,
+      "sha256": "2049e777c2f8d334e344ca135a94a3bddd0b41fb4916b7cec20da89f16726f0e"
+    },
+    {
+      "path": "ai-service/model_artifacts/water/runtime_contract.json",
+      "change": "created",
+      "bytes": 9423,
+      "sha256": "ff35a015339bf81eb805d6a1d5b03b607352fa23066efcdec0004b08fe761b6d"
+    },
+    {
+      "path": "ai-service/model_registry.json",
+      "change": "created",
+      "bytes": 3558,
+      "sha256": "ce23ba1648a911efb142affb80fd62a2f60c65f952f815f085e4651a4872393d"
+    },
+    {
+      "path": "ai-service/replay/bsf/bsf_replay_development_v1.csv",
+      "change": "created",
+      "bytes": 25996,
+      "sha256": "a5344e8dedb7ba432d6745cde54ae9be40fdfbf7868f956161c8a86df130aeed"
+    },
+    {
+      "path": "ai-service/replay/bsf/bsf_replay_development_v1.metadata.json",
+      "change": "created",
+      "bytes": 1087,
+      "sha256": "f1d25f5d7f39323cc02d01d1b7d5523047df747af378de3b69f89755cb0056d9"
+    },
+    {
+      "path": "ai-service/replay/bsf/trajectory_index.json",
+      "change": "created",
+      "bytes": 3427,
+      "sha256": "fc7cdfdf35fca0848b4754a6a4a8d86050a7750b349425e2ad1beb0a1cfa3beb"
+    },
+    {
+      "path": "ai-service/requirements.txt",
+      "change": "created",
+      "bytes": 1240,
+      "sha256": "dc30323a202f036ef222b502aae4d67707faf1b205cd5db61f599917d2c532c6"
+    },
+    {
+      "path": "ai-service/tests/fixtures/a1_development_train.jpg",
+      "change": "created",
+      "bytes": 27776,
+      "sha256": "02365f0dc6837ffd52d269e1ac293fd32ec477dd627f62004a7f43918cc07399"
+    },
+    {
+      "path": "ai-service/tests/fixtures/a2_development_train.jpg",
+      "change": "created",
+      "bytes": 4324092,
+      "sha256": "943747a6bfb94add42acd4fa25354784dbf449611ef80055e1f39afec31ddf01"
+    },
+    {
+      "path": "ai-service/tests/fixtures/fixture_metadata.json",
+      "change": "created",
+      "bytes": 636,
+      "sha256": "44898a9eedf1dc2c769f8401433579ceb8afdcb128cef0ba5cc33d7b0f9ccb98"
+    },
+    {
+      "path": "ai-service/tests/fixtures/golden_reference.json",
+      "change": "created",
+      "bytes": 3680,
+      "sha256": "642ab1288551466ba702f88d74d8bcb45574bf0948bee6a5c1e6a701c290a26a"
+    },
+    {
+      "path": "ai-service/tests/test_service.py",
+      "change": "created",
+      "bytes": 12789,
+      "sha256": "da466d40d4bdba1bd32d5d7c7a3380d5778d4f34a75435c222d11bfd0f351308"
+    },
+    {
+      "path": "ai-service/tools/http_smoke.py",
+      "change": "created",
+      "bytes": 7088,
+      "sha256": "18c79d3bd6be789bd05828c51126ab035b2ec8fd6ac8c68530e0c29fa47acfe0"
+    },
+    {
+      "path": "ai-service/tools/offline_guard.py",
+      "change": "created",
+      "bytes": 1945,
+      "sha256": "32f09a506f035c2d59178707e57eee6459aa69215042c385bc682a9cccc68f4c"
+    },
+    {
+      "path": "app/(mobile)/mitra/ai/page.tsx",
+      "change": "created",
+      "bytes": 122,
+      "sha256": "0d4ee2cd3b2f196e16844ac5f0ffd038902da07a043c09fdcb70a16605b580b5"
+    },
+    {
+      "path": "app/(mobile)/mitra/layout.tsx",
+      "change": "modified",
+      "bytes": 2017,
+      "sha256": "67b2ec27b2cc477388ac9aa263954c52a8fe56374a252b11941429bcb1bdd0dc"
+    },
+    {
+      "path": "app/api/ai/bridge/route.ts",
+      "change": "modified",
+      "bytes": 1685,
+      "sha256": "69ef8e5bcc0abbebf12a52bf9d7abdbf006affaf94ecb66dffa6270e675cb54d"
+    },
+    {
+      "path": "app/api/ai/match-supply/route.ts",
+      "change": "modified",
+      "bytes": 2660,
+      "sha256": "80fd7bc8d45f4d0166c22dc46980e2981fc30e8cbb06395bde9bfc76d5a3edd3"
+    },
+    {
+      "path": "app/api/ai/recommend/[pondId]/route.ts",
+      "change": "modified",
+      "bytes": 476,
+      "sha256": "68554f691389c2a12423c99c1bf173c20443f8be535eaa6c9a36f460d4b79079"
+    },
+    {
+      "path": "app/api/ai/service/[...path]/route.ts",
+      "change": "created",
+      "bytes": 388,
+      "sha256": "a87943dc46344c73f8ae4e3370db30664fbe325995d0a5935bb714700beb7acd"
+    },
+    {
+      "path": "app/api/iot/telemetry/route.ts",
+      "change": "modified",
+      "bytes": 3679,
+      "sha256": "3fcac39662d86bbcb2ec4046ef1a0ef8fb162b08728f65b94dda2ac956a9c4d2"
+    },
+    {
+      "path": "app/desktop/ai/page.tsx",
+      "change": "created",
+      "bytes": 124,
+      "sha256": "46971467a4bdd4457eceb5eabb279aa27d24c6897606cafba66fb82b61eb178f"
+    },
+    {
+      "path": "app/desktop/layout.tsx",
+      "change": "modified",
+      "bytes": 870,
+      "sha256": "ddc79dcdf7d4d4eef350e25f79b2e1cb79394ec23e2287caf350e928ff7dec25"
+    },
+    {
+      "path": "app/globals.css",
+      "change": "modified",
+      "bytes": 2799,
+      "sha256": "e97e48ffedc09efc3d0b784a5763e3b77b1902a3110816c3b0950104dbc89dbf"
+    },
+    {
+      "path": "components/ai/AiContextNotice.tsx",
+      "change": "created",
+      "bytes": 319,
+      "sha256": "b2b117ab75dad61ce9d9932d0511fc48792a37e9f14e0cb2cf2717182d0867e1"
+    },
+    {
+      "path": "components/ai/AiEntry.tsx",
+      "change": "created",
+      "bytes": 549,
+      "sha256": "1baa96e4a0e3f881013de6761f9fd641709dbc230157edc1cab18a2382bc0a71"
+    },
+    {
+      "path": "components/ai/AiWorkspace.tsx",
+      "change": "created",
+      "bytes": 30102,
+      "sha256": "b64287b3410e6177ebd6c5d6cb8bb44865d275abe13737a88139c5cc485b1451"
+    },
+    {
+      "path": "components/desktop/DesktopSidebar.tsx",
+      "change": "modified",
+      "bytes": 7978,
+      "sha256": "b912280cb4e576426cdf6ad74d3dde4adcfdcd75a396d8b3e079a53e3fbf19fd"
+    },
+    {
+      "path": "components/mitra/MitraDrawerMenu.tsx",
+      "change": "modified",
+      "bytes": 6374,
+      "sha256": "f9a90096e12cbbc9bc15cbacb8d53a46d0dccaa4f17fdd0ba15253ce61aacc01"
+    },
+    {
+      "path": "components/shared/DemoPitchToolbar.tsx",
+      "change": "modified",
+      "bytes": 13056,
+      "sha256": "af24fc684be6074eb40696e054c02dde63af52cd415d522ebe35de5fa6026168"
+    },
+    {
+      "path": "docs/AI_INTEGRATION.md",
+      "change": "created",
+      "bytes": 8055,
+      "sha256": "81a262d1a447d6027fab2d4d4fa440e161bd3e40d54d6b053169b0936dd1897c"
+    },
+    {
+      "path": "docs/AI_INTEGRATION_VERIFICATION.json",
+      "change": "created",
+      "bytes": 2506,
+      "sha256": "661989579a86d25f23760bf1b8c516988f1041211aa74dacc446c50059062428"
+    },
+    {
+      "path": "docs/ai-evidence/BROWSER.json",
+      "change": "created",
+      "bytes": 1681,
+      "sha256": "7b4ada06390ad20c0daab86cd5d0dba2adbd53b2f070a56d108123e91d9a05ae"
+    },
+    {
+      "path": "docs/ai-evidence/DEVELOPMENT.json",
+      "change": "created",
+      "bytes": 339,
+      "sha256": "c74404df5760b6df0025333d18932eafca67bf28a94eda98f241a9fbd7501ff8"
+    },
+    {
+      "path": "docs/ai-evidence/HTTP.json",
+      "change": "created",
+      "bytes": 2536,
+      "sha256": "171fa195a378ab67194433833bbd80a89e4038e86351205b562d70e0ce8192ac"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "change": "modified",
+      "bytes": 486,
+      "sha256": "a916c8e4191289cc2f078a37938c5be698d2ca50aa19a04dfe9a6f2ab525d1a8"
+    },
+    {
+      "path": "lib/ai/client.ts",
+      "change": "modified",
+      "bytes": 2026,
+      "sha256": "bbeebca699d462e6c318cfacf2c19938b5ba41e156f3659eb3317977d360eddd"
+    },
+    {
+      "path": "lib/ai/routes.json",
+      "change": "created",
+      "bytes": 3648,
+      "sha256": "917fdf73eda3f412a2908661e35801eb9ec7072cf1cb1cf762f2795324ab05d8"
+    },
+    {
+      "path": "lib/ai/server.ts",
+      "change": "created",
+      "bytes": 4266,
+      "sha256": "b809af969461ec262c2067610da18d85d1e0b5a03d0e7ebd35fdd397d7a801f1"
+    },
+    {
+      "path": "lib/ai/service-client.ts",
+      "change": "created",
+      "bytes": 2456,
+      "sha256": "373562d0510e746c42883a7c54ffe0f75be5c099f2f49c6e5fdab660a2abbffb"
+    },
+    {
+      "path": "lib/demo/verifyGoldenThread.ts",
+      "change": "modified",
+      "bytes": 9210,
+      "sha256": "0a56024fc4a00ffa84af7167257009cca0dda143f868bcd055857006c0f5a616"
+    },
+    {
+      "path": "next.config.ts",
+      "change": "modified",
+      "bytes": 228,
+      "sha256": "2ec0a03a54eff3d690709c0c1d60603186c65a2eed5a9cf59f8c603844e98f65"
+    },
+    {
+      "path": "package.json",
+      "change": "modified",
+      "bytes": 1133,
+      "sha256": "333b0515cb86b78e8a5cfa09e3d1f8feea625c5a62f9828b98076acda64c0df5"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "change": "modified",
+      "bytes": 201280,
+      "sha256": "f948049185ea381c8c0c32a07e2c503268213bd3929c80d63cfe932f1f61c11f"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "change": "created",
+      "bytes": 175,
+      "sha256": "9f8465aa86232240d477c491f3e035daf1d9d17a50d8b3fe5130ac101ec5c770"
+    },
+    {
+      "path": "public/icons/icon-192.png",
+      "change": "created",
+      "bytes": 9049,
+      "sha256": "15386d6aaa1da701d1e0412ec035ff38432cd4fec4b80ed384cadd14754fc9a6"
+    },
+    {
+      "path": "public/icons/icon-512.png",
+      "change": "created",
+      "bytes": 41036,
+      "sha256": "31c378f7bf87e24b0f898877027ebb6a761d0f9c804fa28412ac32a127ab5126"
+    },
+    {
+      "path": "scripts/start-ai.mjs",
+      "change": "created",
+      "bytes": 1784,
+      "sha256": "98adabe4d5bd29001b40347a21f41dd9caeb9446e608dcc9ec77303c9523691a"
+    },
+    {
+      "path": "scripts/test-ai-integration.mjs",
+      "change": "created",
+      "bytes": 9989,
+      "sha256": "80152440a3583a55e9e701823078b4601cc07b77d40bf47842a805694f9f4bf9"
+    },
+    {
+      "path": "tests/ai_browser_smoke.py",
+      "change": "created",
+      "bytes": 7826,
+      "sha256": "2ea1d7613023b46e5b7c00722cdb581baf4697d292a4ae1e2a86ef2dce62c513"
+    }
+  ],
+  "note": "This manifest excludes itself, ignored environments/caches/secrets and private data."
+}

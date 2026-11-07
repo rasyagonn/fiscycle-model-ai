@@ -1,0 +1,74 @@
+{
+  "status": "RESEARCH_PROTOTYPE",
+  "validation": "NOT_FIELD_VALIDATED",
+  "method": "hist_gradient_boosting",
+  "parameter_label": "grid_1:{\"l2_regularization\": 10.0, \"learning_rate\": 0.05, \"max_leaf_nodes\": 7, \"min_samples_leaf\": 20}",
+  "features": [
+    "moisture_percent",
+    "elapsed_days",
+    "current_weight_mg",
+    "previous_weight_mg",
+    "recent_growth_mg_per_day",
+    "forecast_horizon_days"
+  ],
+  "target": "target_weight_mg",
+  "target_unit": "mg_per_individual",
+  "supported_moisture_treatments_percent": [
+    45,
+    55,
+    65,
+    75
+  ],
+  "feature_bounds_from_development_data": {
+    "moisture_percent": {
+      "min": 45.0,
+      "max": 75.0
+    },
+    "elapsed_days": {
+      "min": 0.875,
+      "max": 17.947916724537208
+    },
+    "current_weight_mg": {
+      "min": 1.82,
+      "max": 380.79999999999995
+    },
+    "previous_weight_mg": {
+      "min": 1.82,
+      "max": 380.79999999999995
+    },
+    "recent_growth_mg_per_day": {
+      "min": -98.5295480836117,
+      "max": 147.90546388255703
+    },
+    "forecast_horizon_days": {
+      "min": 0.7708333333357587,
+      "max": 1.2083333912014496
+    }
+  },
+  "training_source": "Mendeley Data v1, DOI 10.17632/k435zc736t.1, CC BY 4.0",
+  "development_replicates": [
+    "45-1",
+    "45-2",
+    "45-3",
+    "45-4",
+    "55-1",
+    "55-2",
+    "55-3",
+    "55-4",
+    "65-1",
+    "65-2",
+    "65-3",
+    "65-4",
+    "75-1",
+    "75-2",
+    "75-3",
+    "75-4"
+  ],
+  "excluded_final_test_replicates": [
+    "45-5",
+    "55-5",
+    "65-5",
+    "75-5"
+  ],
+  "seed": 42
+}

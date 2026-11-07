@@ -25,6 +25,9 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       ok: true,
+    provenance: 'SIMULATED_APPLICATION_SEED',
+    live_sensor_connected: false,
+    persisted: false,
       pondId: pond.id,
       pondName: pond.name,
       species: pond.species,
@@ -48,6 +51,9 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
+    provenance: 'SIMULATED_APPLICATION_SEED',
+    live_sensor_connected: false,
+    persisted: false,
     totalPonds: SEED_PONDS.length,
     ponds: pondsOverview,
     devicesTotal: SEED_DEVICES.length,
@@ -109,7 +115,10 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: 'Telemetri IoT berhasil diperbarui.',
+    provenance: 'SIMULATED_APPLICATION_SEED',
+    live_sensor_connected: false,
+    persisted: false,
+    message: 'Simulasi telemetri dihitung; tidak disimpan dan tidak dikirim ke perangkat IoT.',
     pondId: pond.id,
     pondName: pond.name,
     telemetry: updatedTelemetry,
